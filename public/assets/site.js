@@ -56,6 +56,25 @@
     }
   }
 
+  /* Bildeserie i toppen av forsiden: bytter hvert 5. sekund, pauser ved hover/fokus og når fanen er skjult */
+  var rot = document.querySelector(".rotator");
+  if (rot) {
+    var imgs = rot.querySelectorAll(".slides img"), caps = rot.querySelectorAll(".cap"), link = rot.querySelector(".slides");
+    var i = 0, held = false, reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var show = function (n) {
+      imgs[i].classList.remove("on"); caps[i].classList.remove("on");
+      i = n; imgs[i].classList.add("on"); caps[i].classList.add("on");
+      link.setAttribute("href", caps[i].getAttribute("href"));
+    };
+    if (imgs.length > 1 && !reduce) {
+      rot.addEventListener("mouseenter", function () { held = true; });
+      rot.addEventListener("mouseleave", function () { held = false; });
+      rot.addEventListener("focusin", function () { held = true; });
+      rot.addEventListener("focusout", function () { held = false; });
+      setInterval(function () { if (!held && !document.hidden) show((i + 1) % imgs.length); }, 5000);
+    }
+  }
+
   /* Bevegelige case-videoer stoppes for dem som har bedt om mindre bevegelse */
   if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     document.querySelectorAll("video[data-autoplay]").forEach(function (v) { v.removeAttribute("autoplay"); v.pause(); });
