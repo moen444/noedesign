@@ -56,6 +56,11 @@
     }
   }
 
+  /* Bevegelige case-videoer stoppes for dem som har bedt om mindre bevegelse */
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll("video[data-autoplay]").forEach(function (v) { v.removeAttribute("autoplay"); v.pause(); });
+  }
+
   /* Klikk på telefon og e-post som sekundære konverteringer */
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest("a[href^='tel:'], a[href^='mailto:'], a[href*='calendly.com']");

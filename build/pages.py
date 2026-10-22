@@ -33,8 +33,10 @@ CASES = [
          lede="En ny vingård i Liguria, fra første skisse til ferdig nettside og film.",
          problem="Roots of Alpicella dyrker vin, oliven og grønnsaker uten sprøytemidler på gamle terrasser i Liguria. Prosjektet var helt nytt, uten logo eller nettside, og trengte et uttrykk som var like rolig og jordnært som stedet, og som fungerte på alt fra vinetikett til mobil.",
          solution="Jeg tegnet logoen: en kvinneprofil i én tynn linje, med vinblad og drueklase i håret, satt sammen med navnet. Rundt den laget jeg en designhåndbok med farger hentet fra logoen, typografi, tone og eksempler på etikett, visittkort og nettside. Nettsiden er bygget fra bunnen, med video fra innhøstingen, og jeg var på stedet for å filme og fotografere da druene ble plukket.",
-         deliver=["Logo, symbol og ordmerke", "Designhåndbok", "Nettside tilpasset mobil", "Film og foto fra innhøstingen"],
-         images=[("roa-logo", "Roots of Alpicella-logoen på lys bakgrunn"), ("roa-web-mobile", "Tre sider fra nettsiden på mobil"), ("roa-handbook", "Forside og logoside i designhåndboken"), ("roa-colors", "Fargepalett og tone i designhåndboken"), ("roa-web-desk", "Vineyard-siden til Roots of Alpicella på en stor skjerm"), ("roa-harvest", "Hender ved et kar under innhøstingen")],
+         deliver=["Logo, symbol og ordmerke", "Designhåndbok", "Nettside tilpasset mobil", "Showreel og fortellerfilm fra innhøstingen", "Foto", "Konsept for merch"],
+         images=[("roa-logo", "Roots of Alpicella-logoen på lys bakgrunn"), ("roa-web-mobile", "Tre sider fra nettsiden på mobil"), ("roa-handbook", "Forside og logoside i designhåndboken"), ("roa-colors", "Fargepalett og tone i designhåndboken"), ("roa-web-desk", "Vineyard-siden til Roots of Alpicella på en stor skjerm"), ("roa-harvest", "Hender ved et kar under innhøstingen"), ("roa-merch", "Konsept for t-skjorter og caps med ROA-ordmerket og logoen", "full")],
+         hero_video=dict(src="/video/roa-showreel.mp4", mobile="/video/roa-showreel-mobile.mp4", poster="roa-showreel-poster"),
+         film=dict(src="/video/roa-film.mp4", poster="roa-film-poster", eyebrow="Filmen", caption="Fortellerfilmen om Roots of Alpicella, filmet under innhøstingen. 2 minutter, med lyd."),
          quote=None, link=("https://rootsofalpicella.com", "rootsofalpicella.com")),
     dict(slug="java-mocca", name="Java & Mocca", kind="Kaffebar, Oslo", tags="Logo · Kopper · Profil", cover="java-hero",
          title="Java & Mocca: logo og kopper for to kaféer i Oslo",
@@ -566,7 +568,21 @@ def arbeid(c):
 
 def case_page(c, cs, nxt):
     crumbs = [("Forside", "/"), ("Arbeid", "/arbeid"), (cs["name"], f"/arbeid/{cs['slug']}")]
-    imgs = "".join(f'<figure>{c["pic"](n, a, "(max-width: 640px) 100vw, 50vw")}</figure>' for n, a in cs["images"])
+    def fig(n, a, *opt):
+        full = "full" in opt
+        return f'<figure{" class=\"full\"" if full else ""}>{c["pic"](n, a, "(max-width: 640px) 100vw, 100vw" if full else "(max-width: 640px) 100vw, 50vw")}</figure>'
+    imgs = "".join(fig(*im) for im in cs["images"])
+    hv = cs.get("hero_video")
+    if hv:
+        poster = f"/img/{cs['cover'] if not hv.get('poster') else hv['poster']}-1280.webp"
+        cover = (f'<figure class="case-cover"><video autoplay muted loop playsinline preload="metadata" poster="{poster}" data-autoplay aria-label="{cs["name"]}: showreel">'
+                 f'<source src="{hv["mobile"]}" type="video/mp4" media="(max-width: 640px)"><source src="{hv["src"]}" type="video/mp4"></video></figure>')
+    else:
+        cover = f'<figure class="case-cover">{c["pic"](cs["cover"], cs["name"] + ": " + cs["lede"], "(max-width: 1320px) 100vw, 1280px", eager=True)}</figure>'
+    fm = cs.get("film")
+    film = (f'<section class="section tight" style="padding-top:0"><div class="wrap"><span class="eyebrow">{fm["eyebrow"]}</span>'
+            f'<figure class="case-film"><video controls playsinline preload="none" poster="/img/{fm["poster"]}-1280.webp"><source src="{fm["src"]}" type="video/mp4"></video>'
+            f'<figcaption class="small muted">{fm["caption"]}</figcaption></figure></div></section>') if fm else ""
     q = f'<section class="section white"><div class="wrap" style="max-width:860px"><span class="eyebrow">Hva kunden sier</span><div style="margin-top:20px">{quote_fig(cs["quote"])}</div></div></section>' if cs.get("quote") else ""
     link = f'<p><a class="textlink" href="{cs["link"][0]}" target="_blank" rel="noopener">Se {cs["link"][1]}</a></p>' if cs.get("link") else ""
     body = f'''<div class="wrap case-hero">
@@ -576,11 +592,12 @@ def case_page(c, cs, nxt):
   <p class="lede">{cs["lede"]}</p>
   <div class="facts"><div><span>Kunde</span>{cs["name"]}</div><div><span>Bransje</span>{cs["kind"]}</div><div><span>Leveranse</span>{cs["tags"]}</div></div>
 </div>
-<div class="wrap"><figure style="margin:0">{c["pic"](cs["cover"], cs["name"] + ": " + cs["lede"], "100vw", eager=True, cls="")}</figure></div>
+<div class="wrap">{cover}</div>
 <section class="section"><div class="wrap split">
   <div class="stack"><span class="eyebrow">Utfordringen</span><p class="lede">{cs["problem"]}</p></div>
   <div class="stack"><span class="eyebrow">Løsningen</span><div class="prose"><p>{cs["solution"]}</p></div>{checks(cs["deliver"])}{link}</div>
 </div></section>
+{film}
 <section class="section tight" style="padding-top:0"><div class="wrap gallery">{imgs}</div></section>
 {q}
 <section class="section"><div class="wrap nextcase">
