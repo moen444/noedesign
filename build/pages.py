@@ -142,6 +142,27 @@ def logos_row():
 </div>'''
 
 
+HERO_SLIDES = [
+    ("java-hero", "Take-away-kopp fra Java St. Hanshaugen holdt i strikkevotter", "Java St. Hanshaugen og Mocca Briskeby", "Logo og kopper", "java-mocca"),
+    ("slice-restaurant", "Pizzaesker med Slice-logo i en pizzeria", "Slice Pizza", "Logo og emballasje", "slice-pizza"),
+    ("roa-cover", "Roots of Alpicella-logoen over vingårdsterrassene i Liguria", "Roots of Alpicella", "Profil, nettside og film", "roots-of-alpicella"),
+    ("pl-phone", "Nettsiden til Private Living på en mobil", "Private Living", "Nettside og logo", "private-living"),
+    ("cwk-portrait", "Surfer i Cold Water Kids-t-skjorte i snø", "Cold Water Kids", "Identitet og klær", "cold-water-kids"),
+]
+
+
+def hero_rotator(c):
+    imgs, caps = [], []
+    for i, (img, alt, name, what, slug) in enumerate(HERO_SLIDES):
+        tag = c["pic"](img, alt, "(max-width: 860px) 100vw, 48vw", eager=(i == 0))
+        tag = tag.replace("<img ", f'<img data-slide="{i}"{" class=\"on\"" if i == 0 else ""} ' if i == 0 else f'<img data-slide="{i}" ', 1)
+        imgs.append(tag)
+        caps.append(f'<a class="cap{" on" if i == 0 else ""}" data-slide="{i}" href="/arbeid/{slug}"><span>{name}</span><span>{what}</span></a>')
+    return f'''<figure class="hero-media rotator" aria-roledescription="bildeserie" aria-label="Utvalgt arbeid">
+    <a class="slides" href="/arbeid/{HERO_SLIDES[0][4]}" tabindex="-1" aria-hidden="true">{"".join(imgs)}</a>
+    <figcaption>{"".join(caps)}</figcaption></figure>'''
+
+
 def work_grid(c, cases=None, first_big=True):
     cases = cases or CASES
     out = []
@@ -182,8 +203,7 @@ def home(c):
     <div class="pricebox"><div class="p">14 990 kr<small>eks. mva</small></div><b>Startpakken</b><span>Logo, designhåndbok og salgspresentasjon.</span><a class="textlink" href="/priser">Se alle priser</a></div>
     <div class="hero-quote"><q>Effektiv, proff og engasjert!</q><span>Madelene, Java &amp; Mocca</span></div>
   </div>
-  <figure class="hero-media">{c["pic"]("java-hero", "Take-away-kopp fra Java St. Hanshaugen holdt i strikkevotter", "(max-width: 860px) 100vw, 48vw", eager=True)}
-    <figcaption><span>Java St. Hanshaugen og Mocca Briskeby</span><span>Logo og kopper</span></figcaption></figure>
+  {hero_rotator(c)}
 </div>
 <div class="wrap">{logos_row()}</div>
 
