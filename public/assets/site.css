@@ -327,3 +327,4 @@ table.compare { width: 100%; border-collapse: collapse; min-width: 620px; font-s
 .alt .lbl { font-size: 0.75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
 .alt span { color: var(--muted); font-size: 0.9rem; font-variant-numeric: tabular-nums; }
 .valgfri { font-weight: 400; color: var(--muted); }
+#guide-app { min-height: 420px; }
