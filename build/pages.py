@@ -27,6 +27,15 @@ QUOTES = {
 }
 
 CASES = [
+    dict(slug="roots-of-alpicella", name="Roots of Alpicella", kind="Vingård, Italia", tags="Logo · Profil · Nettside · Film", cover="roa-cover",
+         title="Roots of Alpicella: profil, nettside og film for vingård",
+         desc="Logo, designhåndbok, nettside og film for Roots of Alpicella, en liten vingård på 660 meter i de liguriske alpene. Hele merkevaren fra samme hånd.",
+         lede="En ny vingård i Liguria, fra første skisse til ferdig nettside og film.",
+         problem="Roots of Alpicella dyrker vin, oliven og grønnsaker uten sprøytemidler på gamle terrasser i Liguria. Prosjektet var helt nytt, uten logo eller nettside, og trengte et uttrykk som var like rolig og jordnært som stedet, og som fungerte på alt fra vinetikett til mobil.",
+         solution="Jeg tegnet logoen: en kvinneprofil i én tynn linje, med vinblad og drueklase i håret, satt sammen med navnet. Rundt den laget jeg en designhåndbok med farger hentet fra logoen, typografi, tone og eksempler på etikett, visittkort og nettside. Nettsiden er bygget fra bunnen, med video fra innhøstingen, og jeg var på stedet for å filme og fotografere da druene ble plukket.",
+         deliver=["Logo, symbol og ordmerke", "Designhåndbok", "Nettside tilpasset mobil", "Film og foto fra innhøstingen"],
+         images=[("roa-logo", "Roots of Alpicella-logoen på lys bakgrunn"), ("roa-web-mobile", "Tre sider fra nettsiden på mobil"), ("roa-handbook", "Forside og logoside i designhåndboken"), ("roa-colors", "Fargepalett og tone i designhåndboken"), ("roa-web-desk", "Vineyard-siden til Roots of Alpicella på en stor skjerm"), ("roa-harvest", "Hender ved et kar under innhøstingen")],
+         quote=None, link=("https://rootsofalpicella.com", "rootsofalpicella.com")),
     dict(slug="java-mocca", name="Java & Mocca", kind="Kaffebar, Oslo", tags="Logo · Kopper · Profil", cover="java-hero",
          title="Java & Mocca: logo og kopper for to kaféer i Oslo",
          desc="Nye logoer og take-away-kopper for Mocca Briskeby og Java St. Hanshaugen. Et helhetlig uttrykk for to av Oslos mest sjarmerende kaféer.",
@@ -135,7 +144,9 @@ def work_grid(c, cases=None, first_big=True):
     cases = cases or CASES
     out = []
     for i, cs in enumerate(cases):
-        cls = "item big" if (first_big and i == 0) else ("item half" if (first_big and i in (3, 4)) else "item")
+        rest = len(cases) - 3
+        half = first_big and i >= 3 and rest % 3 == 2 and i >= len(cases) - 2
+        cls = "item big" if (first_big and i == 0) else ("item half" if half else "item")
         sizes = "(max-width: 860px) 100vw, 66vw" if "big" in cls else "(max-width: 860px) 50vw, 33vw"
         out.append(f'''<a class="{cls}" href="/arbeid/{cs["slug"]}"><div class="img">{c["pic"](cs["cover"], cs["name"] + ": " + cs["lede"], sizes)}</div>
 <div class="meta"><h3>{cs["name"]}</h3><span class="tags">{cs["tags"]}</span></div></a>''')
@@ -543,13 +554,13 @@ def arbeid(c):
   {c["crumbs_html"](crumbs)}
   <span class="eyebrow">Arbeid</span>
   <h1 class="h-xl">Logoer, profiler og nettsider jeg har <em>laget</em>.</h1>
-  <p class="lede">Et utvalg prosjekter for kaféer, restauranter, overnatting og mitt eget klesmerke.</p>
+  <p class="lede">Et utvalg prosjekter for en vingård, kaféer, restauranter, overnatting og mitt eget klesmerke.</p>
 </div>
 <section class="section tight" style="padding-top:0"><div class="wrap">{work_grid(c)}</div></section>
 <section class="section white"><div class="wrap">{logos_row()}</div></section>
 {c["cta_band"]("Vil du ha noe lignende?")}'''
     return dict(path="/arbeid", id="arbeid", title="Arbeid: logo, profil og nettsider | noedesign",
-                desc="Utvalgt arbeid fra noedesign: logo og kopper for Java & Mocca, identitet for Slice Pizza, nettsider for Bacalao Bar og Private Living i Lofoten.",
+                desc="Utvalgt arbeid fra noedesign: profil og nettside for vingården Roots of Alpicella, logo for Java & Mocca, identitet for Slice Pizza og nettsider i Lofoten.",
                 body=body, ld=[c["breadcrumbs_ld"](crumbs)])
 
 
