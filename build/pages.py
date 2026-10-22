@@ -601,6 +601,7 @@ def om(c):
     <div class="btns" style="margin-top:8px"><a class="btn" href="{c["CAL"]}" target="_blank" rel="noopener">Book en gratis prat <span class="sq" aria-hidden="true"></span></a><a class="btn ghost" href="{c["LINKEDIN"]}" target="_blank" rel="noopener">LinkedIn</a></div>
   </div>
 </div></section>
+<div class="wrap"><figure class="wide-photo" style="margin:0 0 72px">{c["pic"]("sailing", "Marius på en seilbåt i kveldssol", "100vw")}<figcaption class="small muted" style="margin-top:10px">Når jeg ikke designer, er jeg ofte på havet, med kamera.</figcaption></figure></div>
 <section class="section white"><div class="wrap">
   <div class="head"><span class="eyebrow">Hva jeg gjør</span><h2 class="h-l">Fire ting, fra én person</h2></div>
   <div class="grid g4">
@@ -660,7 +661,7 @@ def personvern(c):
   {c["crumbs_html"](crumbs)}
   <h1 class="h-l">Personvern</h1>
   <div class="prose">
-    <p>noedesign drives av Moen Design (enkeltpersonforetak, org.nr. [fylles inn]) i Oslo. Her står det hvilke opplysninger jeg samler inn og hva de brukes til.</p>
+    <p>noedesign drives av Moen Design (enkeltpersonforetak, org.nr. 921 420 544) i Oslo. Her står det hvilke opplysninger jeg samler inn og hva de brukes til.</p>
     <h2 class="h-m">Skjemaer</h2>
     <p>Når du sender en melding eller bruker «Finn riktig pakke», lagrer jeg det du skriver inn: navn, e-post, eventuelt telefon og bedrift, og svarene dine. Opplysningene brukes bare til å svare deg og gi deg et tilbud. Skjemaene håndteres av Netlify, som drifter nettsiden.</p>
     <h2 class="h-m">Booking</h2>

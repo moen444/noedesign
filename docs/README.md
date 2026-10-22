@@ -13,6 +13,4 @@ Statisk side, generert med Python.
 Logo fra 8 990 · Startpakke 14 990 · Visuell profil fra 29 990 · Nettside fra 24 990 · Profil + nettside fra 49 990 · Trykksaker fra 3 990 per produkt · Timepris 1 150 · Film etter avtale
 
 ## Må fylles inn før lansering
-- Org.nr. på /personvern
-- Bedre portrett (img/marius er bare 450 px)
 - GA4/Ads-ID i config.js

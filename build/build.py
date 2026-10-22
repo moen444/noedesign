@@ -61,8 +61,11 @@ BUSINESS = {
     "address": {"@type": "PostalAddress", "addressLocality": "Oslo", "addressCountry": "NO"},
     "areaServed": [{"@type": "City", "name": "Oslo"}, {"@type": "Country", "name": "Norge"}],
     "priceRange": "kr 8 990–49 990",
-    "founder": {"@type": "Person", "name": "Marius Moen", "jobTitle": "Grafisk designer"},
+    "founder": {"@type": "Person", "name": "Marius Moen", "jobTitle": "Grafisk designer", "image": f"{SITE}/img/marius-640.webp"},
     "foundingDate": "2016",
+    "legalName": "Moen Design",
+    "vatID": "NO921420544MVA",
+    "identifier": {"@type": "PropertyValue", "propertyID": "orgnr", "value": "921420544"},
     "sameAs": [LINKEDIN],
 }
 
@@ -105,7 +108,7 @@ def footer():
       <li><a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a></li><li>Oslo</li>
     </ul></div>
   </div>
-  <div class="bottom"><span>© noedesign · Moen Design</span><span>Svar innen én arbeidsdag</span></div>
+  <div class="bottom"><span>© noedesign · Moen Design · Org.nr. 921 420 544 MVA</span><span>Svar innen én arbeidsdag</span></div>
 </div></footer>
 <div class="mobilebar"><a class="btn ghost" href="tel:{TEL}">Ring</a><a class="btn" href="{CAL}" target="_blank" rel="noopener">Book en prat <span class="sq" aria-hidden="true"></span></a></div>'''
 
