@@ -576,7 +576,7 @@ def case_page(c, cs, nxt):
   <p class="lede">{cs["lede"]}</p>
   <div class="facts"><div><span>Kunde</span>{cs["name"]}</div><div><span>Bransje</span>{cs["kind"]}</div><div><span>Leveranse</span>{cs["tags"]}</div></div>
 </div>
-<div class="wrap"><figure style="margin:0">{c["pic"](cs["cover"], cs["name"] + ": " + cs["lede"], "100vw", eager=True, cls="")}</figure></div>
+<div class="wrap"><figure class="case-cover">{c["pic"](cs["cover"], cs["name"] + ": " + cs["lede"], "(max-width: 1320px) 100vw, 1280px", eager=True)}</figure></div>
 <section class="section"><div class="wrap split">
   <div class="stack"><span class="eyebrow">Utfordringen</span><p class="lede">{cs["problem"]}</p></div>
   <div class="stack"><span class="eyebrow">Løsningen</span><div class="prose"><p>{cs["solution"]}</p></div>{checks(cs["deliver"])}{link}</div>
