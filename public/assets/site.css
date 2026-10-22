@@ -262,8 +262,11 @@ table.compare { width: 100%; border-collapse: collapse; min-width: 620px; font-s
 .facts span { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; }
 .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .case-cover { margin: 0; }
-.case-cover img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r); background: var(--soft); }
-@media (max-width: 640px) { .case-cover img { aspect-ratio: 4 / 3; } }
+.case-cover img, .case-cover video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r); background: var(--soft); }
+@media (max-width: 640px) { .case-cover img, .case-cover video { aspect-ratio: 4 / 3; } }
+.case-film { margin: 16px 0 0; }
+.case-film video { width: 100%; aspect-ratio: 16 / 9; border-radius: var(--r); background: #111; display: block; }
+.case-film figcaption { margin-top: 10px; }
 .gallery figure { margin: 0; }
 .gallery .full { grid-column: span 2; }
 .gallery img { width: 100%; border-radius: var(--r); background: var(--soft); }
