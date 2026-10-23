@@ -3,7 +3,7 @@
 PKGS = {
     "logo": dict(name="Logo", price="8 990", frm=True, url="/logo-design", num=8990,
                  for_="For deg som bare trenger en logo.",
-                 inc=["Logo i 2 konsepter", "Én runde revisjon", "Varianter: liggende, stående og symbol", "Farger", "Alle filformater for skjerm og trykk"]),
+                 inc=["Logo i 2 konsepter", "Én runde revisjon", "Varianter: liggende, stående og symbol", "Farger", "Filer som SVG og PNG, i mørk og lys variant, for skjerm og trykk"]),
     "start": dict(name="Startpakke", price="14 990", frm=False, url="/startpakke", num=14990,
                   for_="For deg som skal komme raskt i gang og selge.",
                   inc=["Logo med varianter og fargepalett", "Designhåndbok (PDF)", "Salgspresentasjon, 10–15 sider", "Én runde revisjon"]),
@@ -200,7 +200,7 @@ def home(c):
     <h1 class="h-xl">Logo, nettside og film for <em>små bedrifter</em>.</h1>
     <p class="lede">Fra én designer, til fast pris. Jeg har laget identitet for kaféer, restauranter og nyoppstartede bedrifter siden 2016, og du snakker med meg fra første prat til ferdig levering.</p>
     <div class="btns"><a class="btn" href="{c["CAL"]}" target="_blank" rel="noopener">Book en gratis prat <span class="sq" aria-hidden="true"></span></a><a class="btn ghost" href="/finn-riktig-pakke">Finn riktig pakke</a></div>
-    <div class="pricebox"><div class="p">14 990 kr<small>eks. mva</small></div><b>Startpakken</b><span>Logo, designhåndbok og salgspresentasjon.</span><a class="textlink" href="/priser">Se alle priser</a></div>
+    <div class="pricebox"><div class="p">14 990 kr<small>eks. mva</small></div><b>Startpakke</b><span>Logo, designhåndbok og salgspresentasjon.</span><a class="textlink" href="/priser">Se alle priser</a></div>
     <div class="hero-quote"><q>Effektiv, proff og engasjert!</q><span>Madelene, Java &amp; Mocca</span></div>
   </div>
   {hero_rotator(c)}
@@ -224,7 +224,7 @@ def home(c):
 </div></section>
 
 <section class="section white" id="priser"><div class="wrap">
-  <div class="head"><span class="eyebrow">Tjenester og priser</span><h2 class="h-l">Faste priser. Du vet hva det koster før vi starter.</h2>
+  <div class="head"><span class="eyebrow">Tjenester og priser</span><h2 class="h-l">Priser fra 8 990 kr. Fast pris før vi starter.</h2>
     <p class="lede">Usikker på hva du trenger? <a class="textlink" href="/finn-riktig-pakke">Svar på fire spørsmål</a>, så får du et forslag med pris.</p></div>
   {packages(c)}
   <p class="small muted" style="margin-top:16px">Alle priser er eks. mva. Endelig pris avtaler vi etter en kort prat.</p>
@@ -305,22 +305,27 @@ def logo_page(c):
     extra = f'''<section class="section"><div class="wrap">
   <div class="head"><span class="eyebrow">Logo eller Startpakke?</span><h2 class="h-l">For 6 000 kr mer får du det du trenger for å selge</h2>
     <p class="lede">De fleste som starter med bare en logo, trenger snart en designhåndbok og en presentasjon. Derfor velger de fleste Startpakken.</p></div>
-  <div class="pkgs" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">{pkg_card("logo")}{pkg_card("start", True, "Best verdi")}</div>
+  <div class="pkgs" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">{pkg_card("logo")}{pkg_card("start", True)}</div>
+</div></section>
+<section class="section white"><div class="wrap">
+  <div class="head"><span class="eyebrow">Tidligere kunder</span><h2 class="h-l">Det de sier om logoene</h2></div>
+  <div class="quotes" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">{quote_fig("james")}{quote_fig("madelene_short")}{quote_fig("kirsti")}</div>
 </div></section>'''
     return service_page(
         c, "/logo-design", "logo", "Logodesign",
         "Logodesign i Oslo – fra 8 990 kr, fast pris | noedesign",
-        "Logodesign i Oslo til fast pris. Logo i to konsepter med varianter og alle filer fra 8 990 kr, eller Startpakken med designhåndbok og presentasjon.",
+        "Logodesign i Oslo til fast pris. Logo i to konsepter med varianter og filer fra 8 990 kr, eller Startpakken med designhåndbok og presentasjon.",
         "Logodesign i Oslo", "En logo som fungerer <em>overalt</em> der kundene ser deg.",
-        "Jeg tegner logoer for små bedrifter i Oslo: til skilt, kopper, esker, nettside og sosiale medier. Du får to konsepter å velge mellom, og alle filene du trenger.",
+        "Jeg tegner logoer for små bedrifter i Oslo: til skilt, kopper, esker, nettside og sosiale medier. Du får to konsepter å velge mellom, og filene du trenger til skjerm og trykk.",
         "slice-box", "Pizzaesker med Slice-logo",
-        pricebox("8 990", "Logo", "To konsepter, varianter og alle filer."),
+        pricebox("8 990", "Logo", "To konsepter, varianter og filer til skjerm og trykk."),
         "En logo som er ferdig til bruk",
-        PKGS["logo"]["inc"] + ["Leveres som SVG og PNG, i mørk og lys variant"],
+        PKGS["logo"]["inc"],
         "For deg som trenger en logo og fikser resten selv. Trenger du også designhåndbok og en presentasjon å selge med, er Startpakken et bedre kjøp.",
         extra, by_slug("slice-pizza", "java-mocca", "private-living"),
-        [("Hva er forskjellen på Logo og Startpakke?", "Logo-pakken gir deg logoen i to konsepter med varianter og alle filer. Startpakken gir deg i tillegg en designhåndbok og en ferdig salgspresentasjon på 10–15 sider, for 6 000 kr mer."),
+        [("Hva er forskjellen på Logo og Startpakke?", "Logo-pakken gir deg logoen i to konsepter med varianter og filer til skjerm og trykk. Startpakken gir deg i tillegg en designhåndbok og en ferdig salgspresentasjon på 10–15 sider, for 6 000 kr mer."),
          ("Hvilke filer får jeg?", "Du får logoen som SVG og PNG, i mørk og lys variant, klar for skjerm og trykk. Vil du ha andre formater, er det bare å si fra."),
+         ("Hvem eier logoen?", "Du eier logoen og alle filene når fakturaen er betalt. Det gjelder også Startpakke og Visuell profil."),
          ("Hva om jeg ikke liker forslagene?", "Du får to konsepter og én runde med endringer. Trenger du flere runder, avtaler vi det før jeg fortsetter, til timepris 1 150 kr."),
          ("Hvor lang tid tar det?", "Vi avtaler leveringstid i den første praten, ut fra hva du trenger og når du trenger det."),
          ("Jobber du bare med bedrifter i Oslo?", "Nei. De fleste kundene mine er i Oslo, men jeg jobber også med bedrifter i Lofoten og resten av Norge. Alt kan gjøres på video.")],
@@ -345,13 +350,13 @@ def startpakke(c):
   <div class="quotes" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">{quote_fig("elektro")}{quote_fig("premiumruss")}</div>
 </div></section>'''
     return service_page(
-        c, "/startpakke", "startpakke", "Startpakken",
+        c, "/startpakke", "startpakke", "Startpakke",
         "Startpakken – logo, designhåndbok og pitch | noedesign",
         "Startpakken fra noedesign: logo, designhåndbok og en ferdig salgspresentasjon på 10–15 sider. Fast pris 14 990 kr eks. mva. Klar til bruk fra dag én.",
-        "Startpakken", "Alt du trenger for å se <em>profesjonell</em> ut fra dag én.",
+        "Startpakke", "Alt du trenger for å se <em>profesjonell</em> ut fra dag én.",
         "Logo, designhåndbok og salgspresentasjon, levert som én komplett pakke. For deg som skal i gang og trenger å selge, ikke bare se bra ut.",
         "magazine", "Designhåndbok og trykksaker i ny profil",
-        pricebox("14 990", "Startpakken", "Fast pris, én runde revisjon inkludert.", frm=False),
+        pricebox("14 990", "Startpakke", "Fast pris, én runde revisjon inkludert.", frm=False),
         "En komplett start, ikke bare en logo",
         PKGS["start"]["inc"] + ["Alle filer ryddig organisert og klare til bruk"],
         "For nyoppstartede bedrifter og de som vil fornye seg raskt. Det eneste i pakken du ikke får andre steder, er salgspresentasjonen.",
@@ -489,7 +494,7 @@ def kafe_page(c):
         "Kafé og restaurant", "Logo og profil for <em>kafé og restaurant</em> i Oslo.",
         "Jeg har laget logoer, kopper, pizzaesker og nettsider for kaféer og restauranter i Oslo og Lofoten. Du får én designer som forstår hvordan gjestene møter merkevaren din.",
         "slice-restaurant", "Pizzaesker med Slice-logo i en restaurant",
-        pricebox("14 990", "Startpakken", "Logo, designhåndbok og presentasjon.", frm=False),
+        pricebox("14 990", "Startpakke", "Logo, designhåndbok og presentasjon.", frm=False),
         "Alt på ett sted",
         ["Logo og visuell profil", "Kopper, esker og emballasje", "Meny, skilt og trykksaker", "Nettside med meny, åpningstider og booking", "Kort film til nettside og sosiale medier"],
         "For nye og etablerte kaféer, bakerier, barer og restauranter som vil se like gode ut som maten og stemningen de serverer.",
@@ -513,7 +518,7 @@ def priser(c):
   {c["crumbs_html"](crumbs)}
   <span class="eyebrow">Tjenester og priser</span>
   <h1 class="h-xl">Priser på logo, profil og nettside.</h1>
-  <p class="lede">Faste priser, så du vet hva det koster før vi starter. Usikker på hva du trenger? <a class="textlink" href="/finn-riktig-pakke">Svar på fire spørsmål</a>, så får du et forslag.</p>
+  <p class="lede">Priser fra 8 990 kr, og fast pris avtalt før vi starter. Usikker på hva du trenger? <a class="textlink" href="/finn-riktig-pakke">Svar på fire spørsmål</a>, så får du et forslag.</p>
 </div>
 <section class="section tight"><div class="wrap">{packages(c)}
   <div class="addons"><div class="addon"><b>Timepris</b><span>Endringer og småjobber.</span><span class="p">1 150 kr</span></div></div>

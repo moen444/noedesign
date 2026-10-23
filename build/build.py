@@ -12,7 +12,7 @@ PUB = ROOT / "public"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import pages as P  # noqa: E402
 
-SITE = "https://www.noedesign.no"
+SITE = "https://noedesign.no"
 CAL = "https://calendly.com/noedesign-info/30min"
 TEL = "+4746938750"
 TEL_SHOW = "46 93 87 50"
@@ -81,7 +81,7 @@ def header(path):
     return f'''<a class="skip" href="#innhold">Hopp til innholdet</a>
 <header class="site-header"><div class="wrap hdr">
   <a class="logo" href="/" aria-label="noedesign, til forsiden"><img src="/img/noedesign-dark.png" width="520" height="111" alt="noedesign"></a>
-  <nav class="nav" aria-label="Hovedmeny">{links}<a class="tel" href="tel:{TEL}">{TEL_SHOW}</a><a class="btn" href="/finn-riktig-pakke">Finn riktig pakke</a></nav>
+  <nav class="nav" aria-label="Hovedmeny">{links}<a href="/kafe-og-restaurant">Kafé og restaurant</a><a href="/kontakt">Kontakt</a><a class="tel" href="tel:{TEL}">{TEL_SHOW}</a><a class="btn" href="/finn-riktig-pakke">Finn riktig pakke</a></nav>
   <details class="menu"><summary>Meny</summary><div class="panel">{mlinks}<a href="/kafe-og-restaurant">Kafé og restaurant</a><a href="/kontakt">Kontakt</a><a class="btn" href="/finn-riktig-pakke">Finn riktig pakke</a></div></details>
 </div></header>'''
 
@@ -94,7 +94,7 @@ def footer():
       <p style="color:var(--on-dark-muted);max-width:34ch">Logo, nettside og film for små bedrifter i Oslo. Fra én designer, til fast pris.</p>
     </div>
     <div><h2>Tjenester</h2><ul>
-      <li><a href="/logo-design">Logodesign</a></li><li><a href="/startpakke">Startpakken</a></li>
+      <li><a href="/logo-design">Logodesign</a></li><li><a href="/startpakke">Startpakke</a></li>
       <li><a href="/visuell-profil">Visuell profil</a></li><li><a href="/nettside">Nettside</a></li>
       <li><a href="/grafisk-design">Grafisk design og trykk</a></li><li><a href="/kafe-og-restaurant">Kafé og restaurant</a></li>
     </ul></div>
@@ -131,9 +131,10 @@ def contact_form(title="Fortell kort om bedriften din", default_service=""):
   </div>
   <div class="row2">
     <div class="field"><label for="k-tjeneste">Hva trenger du?</label><select id="k-tjeneste" name="tjeneste">{o}</select></div>
-    <div class="field"><label for="k-budsjett">Budsjett</label><select id="k-budsjett" name="budsjett"><option>Vet ikke</option><option>Under 10 000 kr</option><option>10 000–20 000 kr</option><option>20 000–40 000 kr</option><option>Over 40 000 kr</option></select></div>
+    <div class="field"><label for="k-budsjett">Budsjett (eks. mva)</label><select id="k-budsjett" name="budsjett"><option>Vet ikke</option><option>Logo, fra 8 990 kr</option><option>Startpakke, 14 990 kr</option><option>Nettside, fra 24 990 kr</option><option>Visuell profil, fra 29 990 kr</option><option>Profil + nettside, fra 49 990 kr</option><option>Over 50 000 kr</option></select></div>
   </div>
   <div class="field"><label for="k-melding">Kort om prosjektet</label><textarea id="k-melding" name="melding" required placeholder="Hva gjør bedriften, og hva trenger du hjelp med?"></textarea></div>
+  <p class="small muted">Jeg bruker opplysningene dine bare til å svare på henvendelsen. Les mer i <a class="textlink" href="/personvern">personvernerklæringen</a>.</p>
   <div class="btns"><button class="btn" type="submit">Send <span class="sq" aria-hidden="true"></span></button><span class="small muted">eller <a class="textlink" href="{CAL}" target="_blank" rel="noopener">book en gratis prat</a></span></div>
 </form>'''
 
