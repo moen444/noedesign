@@ -305,7 +305,11 @@ def logo_page(c):
     extra = f'''<section class="section"><div class="wrap">
   <div class="head"><span class="eyebrow">Logo eller Startpakke?</span><h2 class="h-l">For 6 000 kr mer får du det du trenger for å selge</h2>
     <p class="lede">De fleste som starter med bare en logo, trenger snart en designhåndbok og en presentasjon. Derfor velger de fleste Startpakken.</p></div>
-  <div class="pkgs" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">{pkg_card("logo")}{pkg_card("start", True, "Best verdi")}</div>
+  <div class="pkgs" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">{pkg_card("logo")}{pkg_card("start", True)}</div>
+</div></section>
+<section class="section white"><div class="wrap">
+  <div class="head"><span class="eyebrow">Tidligere kunder</span><h2 class="h-l">Det de sier om logoene</h2></div>
+  <div class="quotes" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">{quote_fig("james")}{quote_fig("madelene_short")}{quote_fig("kirsti")}</div>
 </div></section>'''
     return service_page(
         c, "/logo-design", "logo", "Logodesign",
@@ -321,6 +325,7 @@ def logo_page(c):
         extra, by_slug("slice-pizza", "java-mocca", "private-living"),
         [("Hva er forskjellen på Logo og Startpakke?", "Logo-pakken gir deg logoen i to konsepter med varianter og filer til skjerm og trykk. Startpakken gir deg i tillegg en designhåndbok og en ferdig salgspresentasjon på 10–15 sider, for 6 000 kr mer."),
          ("Hvilke filer får jeg?", "Du får logoen som SVG og PNG, i mørk og lys variant, klar for skjerm og trykk. Vil du ha andre formater, er det bare å si fra."),
+         ("Hvem eier logoen?", "Du eier logoen og alle filene når fakturaen er betalt. Det gjelder også Startpakke og Visuell profil."),
          ("Hva om jeg ikke liker forslagene?", "Du får to konsepter og én runde med endringer. Trenger du flere runder, avtaler vi det før jeg fortsetter, til timepris 1 150 kr."),
          ("Hvor lang tid tar det?", "Vi avtaler leveringstid i den første praten, ut fra hva du trenger og når du trenger det."),
          ("Jobber du bare med bedrifter i Oslo?", "Nei. De fleste kundene mine er i Oslo, men jeg jobber også med bedrifter i Lofoten og resten av Norge. Alt kan gjøres på video.")],
