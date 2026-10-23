@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /takk
 
-Sitemap: https://www.noedesign.no/sitemap.xml
+Sitemap: https://noedesign.no/sitemap.xml

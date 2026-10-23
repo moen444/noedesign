@@ -12,7 +12,7 @@ PUB = ROOT / "public"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import pages as P  # noqa: E402
 
-SITE = "https://www.noedesign.no"
+SITE = "https://noedesign.no"
 CAL = "https://calendly.com/noedesign-info/30min"
 TEL = "+4746938750"
 TEL_SHOW = "46 93 87 50"
