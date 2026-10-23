@@ -196,8 +196,8 @@ def service_ld(c, name, desc, url, price, frm=True):
 def home(c):
     body = f'''<div class="wrap hero">
   <div class="hero-copy">
-    <span class="eyebrow">Grafisk designer i Oslo · siden 2016</span>
-    <h1 class="h-xl">Logo, nettside og film for små bedrifter <em>i Oslo.</em></h1>
+    <span class="eyebrow">Grafisk designer i Oslo · oppdrag i hele Norge</span>
+    <h1 class="h-xl">Logo, nettside og film for <em>små bedrifter</em>.</h1>
     <p class="lede">Fra én designer, til fast pris. Jeg har laget identitet for kaféer, restauranter og nyoppstartede bedrifter siden 2016, og du snakker med meg fra første prat til ferdig levering.</p>
     <div class="btns"><a class="btn" href="{c["CAL"]}" target="_blank" rel="noopener">Book en gratis prat <span class="sq" aria-hidden="true"></span></a><a class="btn ghost" href="/finn-riktig-pakke">Finn riktig pakke</a></div>
     <div class="pricebox"><div class="p">14 990 kr<small>eks. mva</small></div><b>Startpakken</b><span>Logo, designhåndbok og salgspresentasjon.</span><a class="textlink" href="/priser">Se alle priser</a></div>
@@ -512,7 +512,7 @@ def priser(c):
     body = f'''<div class="wrap case-hero">
   {c["crumbs_html"](crumbs)}
   <span class="eyebrow">Tjenester og priser</span>
-  <h1 class="h-xl">Priser på logo, profil og <em>nettside</em>.</h1>
+  <h1 class="h-xl">Priser på logo, profil og nettside.</h1>
   <p class="lede">Faste priser, så du vet hva det koster før vi starter. Usikker på hva du trenger? <a class="textlink" href="/finn-riktig-pakke">Svar på fire spørsmål</a>, så får du et forslag.</p>
 </div>
 <section class="section tight"><div class="wrap">{packages(c)}
@@ -575,7 +575,7 @@ def arbeid(c):
     body = f'''<div class="wrap case-hero">
   {c["crumbs_html"](crumbs)}
   <span class="eyebrow">Arbeid</span>
-  <h1 class="h-xl">Logoer, profiler og nettsider jeg har <em>laget</em>.</h1>
+  <h1 class="h-xl">Logoer, profiler og nettsider jeg har laget.</h1>
   <p class="lede">Et utvalg prosjekter for en vingård, kaféer, restauranter, overnatting og mitt eget klesmerke.</p>
 </div>
 <section class="section tight" style="padding-top:0"><div class="wrap">{work_grid(c)}</div></section>
@@ -670,7 +670,7 @@ def kontakt(c):
     body = f'''<div class="wrap case-hero">
   {c["crumbs_html"](crumbs)}
   <span class="eyebrow">Kontakt</span>
-  <h1 class="h-xl">La oss ta en <em>prat</em>.</h1>
+  <h1 class="h-xl">La oss ta en prat.</h1>
   <p class="lede">Book 30 minutter på video eller telefon, ring, eller send en kort melding. Du får svar innen én arbeidsdag, og en fast pris før noe starter.</p>
 </div>
 <section class="section tight" style="padding-top:0"><div class="wrap cta-band">
@@ -694,7 +694,7 @@ def kontakt(c):
 def takk(c):
     body = f'''<div class="wrap case-hero" style="max-width:840px;padding-block:96px">
   <span class="eyebrow">Takk</span>
-  <h1 class="h-xl">Takk! Jeg har fått <em>meldingen</em> din.</h1>
+  <h1 class="h-xl">Takk! Jeg har fått meldingen din.</h1>
   <p class="lede">Jeg svarer innen én arbeidsdag, med et forslag og en fast pris. Vil du snakke med en gang, kan du booke en prat eller ringe meg.</p>
   <div class="btns"><a class="btn" href="{c["CAL"]}" target="_blank" rel="noopener">Book en gratis prat</a><a class="btn ghost" href="tel:{c["TEL"]}">Ring {c["TEL_SHOW"]}</a></div>
   <p><a class="textlink" href="/arbeid">Se arbeid mens du venter</a></p>

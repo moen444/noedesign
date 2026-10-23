@@ -48,6 +48,8 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
 .dark .eyebrow { color: var(--on-dark-muted); }
 .h-xl { font: 400 clamp(2.5rem, 1.4rem + 4.6vw, 5rem)/1.02 var(--display); letter-spacing: -0.02em; }
 .h-xl em, .h-l em, .h-m em { font-style: italic; }
+.h-xl .dot { color: var(--dot); }
+.h-xl em + .dot { margin-left: -0.06em; }
 .h-l { font: 400 clamp(2rem, 1.3rem + 2.8vw, 3.4rem)/1.05 var(--display); letter-spacing: -0.015em; }
 .h-m { font: 400 clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem)/1.15 var(--display); }
 .h-s { font: 700 1.1rem/1.3 var(--sans); }
