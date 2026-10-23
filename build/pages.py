@@ -196,8 +196,8 @@ def service_ld(c, name, desc, url, price, frm=True):
 def home(c):
     body = f'''<div class="wrap hero">
   <div class="hero-copy">
-    <span class="eyebrow">Grafisk designer i Oslo · siden 2016</span>
-    <h1 class="h-xl">Logo, nettside og film for små bedrifter <em>i Oslo.</em></h1>
+    <span class="eyebrow">Grafisk designer i Oslo · oppdrag i hele Norge</span>
+    <h1 class="h-xl">Logo, nettside og film for <em>små bedrifter</em>.</h1>
     <p class="lede">Fra én designer, til fast pris. Jeg har laget identitet for kaféer, restauranter og nyoppstartede bedrifter siden 2016, og du snakker med meg fra første prat til ferdig levering.</p>
     <div class="btns"><a class="btn" href="{c["CAL"]}" target="_blank" rel="noopener">Book en gratis prat <span class="sq" aria-hidden="true"></span></a><a class="btn ghost" href="/finn-riktig-pakke">Finn riktig pakke</a></div>
     <div class="pricebox"><div class="p">14 990 kr<small>eks. mva</small></div><b>Startpakken</b><span>Logo, designhåndbok og salgspresentasjon.</span><a class="textlink" href="/priser">Se alle priser</a></div>
