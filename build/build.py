@@ -18,7 +18,7 @@ TEL = "+4746938750"
 TEL_SHOW = "46 93 87 50"
 MAIL = "info@noedesign.no"
 LINKEDIN = "https://www.linkedin.com/company/noedesign"
-VERSION = "6"
+VERSION = "7"
 
 IMG_WIDTHS = {}
 for f in (PUB / "img").glob("*.webp"):
@@ -69,7 +69,7 @@ BUSINESS = {
     "sameAs": [LINKEDIN],
 }
 
-NAV = [("/arbeid", "Arbeid"), ("/logo-design", "Logo"), ("/visuell-profil", "Profil"), ("/nettside", "Nettside"),
+NAV = [("/arbeid", "Arbeid"), ("/logo-design", "Logo"), ("/startpakke", "Startpakke"), ("/visuell-profil", "Profil"), ("/nettside", "Nettside"),
        ("/priser", "Priser"), ("/om", "Om meg")]
 
 
