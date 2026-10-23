@@ -18,7 +18,7 @@ TEL = "+4746938750"
 TEL_SHOW = "46 93 87 50"
 MAIL = "info@noedesign.no"
 LINKEDIN = "https://www.linkedin.com/company/noedesign"
-VERSION = "4"
+VERSION = "5"
 
 IMG_WIDTHS = {}
 for f in (PUB / "img").glob("*.webp"):
@@ -212,6 +212,8 @@ def write(path, content):
     out = PUB / ("index.html" if path == "/" else path.strip("/") + ("/index.html" if not path.endswith(".html") else ""))
     if path.endswith(".html"):
         out = PUB / path.strip("/")
+    # Gult punktum: avsluttende punktum i hovedoverskriften får aksentfargen
+    content = re.sub(r'(<h1 class="h-xl">.*?)\.</h1>', r'\1<span class="dot">.</span></h1>', content, count=1, flags=re.S)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(content, encoding="utf-8")
 
