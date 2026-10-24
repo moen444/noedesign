@@ -101,6 +101,15 @@ CASES = [
          deliver=["Monogram og logo", "Stempel-versjon", "Flere fargeversjoner", "Designhåndbok (PDF)", "Filer for skjerm og trykk"],
          images=[("pr-gull", "Premiumruss-logoen i gull"), ("pr-stempel", "Premiumruss-stempelet i bordeaux"), ("pr-stempel-gull", "Premiumruss-stempelet i gull")],
          quote="premiumruss"),
+    dict(slug="kjeoya-lodge", name="Kjeøya Lodge", kind="Lodge, Lofoten", tags="Logo · Visuell profil · Nettsideretningslinjer", cover="kj-cover",
+         title="Kjeøya Lodge: logo og visuell profil i Lofoten",
+         desc="Logo med fjell og hytte, farger, typografi og retningslinjer for nettside til Kjeøya Lodge i Lofoten. En visuell profil som passer stedet.",
+         lede="En profil med fjellet og hytta i midten, laget for en lodge i Lofoten.",
+         problem="Kjeøya er en lodge i Lofoten og trengte en visuell profil som fungerer på nettsiden, i sosiale medier og i trykk, med et rolig uttrykk som passer stedet.",
+         solution="Logoen har et fjellsymbol med en hytte under toppen, over navnet i Garamond Premier Pro Bold og «Lofoten» i grønn. Den finnes i flere formater, for nettside og for sosiale medier, i blågrønn og hvit. I tillegg tegnet jeg symboler, favicon og et bølgeikon til menyen. Fargene er dyp blågrønn og en lysere grønn, med Avenir Next og Baskerville som skrifter. Profilen inkluderer også retningslinjer for nettsiden: logo på mørk og lys bakgrunn, knapper og lenker.",
+         deliver=["Logo i flere formater", "Symboler, favicon og menyikon", "Fargepalett og typografi", "Visuell profil (PDF)", "Retningslinjer for nettside"],
+         images=[("kj-logo", "Kjeøya-logoen med fjell og hytte, symboler og fargepalett"), ("kj-web", "Retningslinjer for nettside og bruk av logo"), ("kj-font", "Typografi i den visuelle profilen"), ("kj-ny", "Kjeøya Lofoten-logoen i stående format")],
+         quote=None),
 ]
 
 
