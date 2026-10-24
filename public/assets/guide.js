@@ -6,7 +6,7 @@
     logo: { name: "Logo", price: 8990, from: true, url: "/logo-design", for: "Deg som bare trenger en logo.",
       inc: ["Logo i 2 konsepter", "Én runde revisjon", "Varianter: liggende, stående og symbol", "Farger", "Filer som SVG og PNG, i mørk og lys variant, for skjerm og trykk"] },
     start: { name: "Startpakke", price: 14990, from: false, url: "/startpakke", for: "Deg som skal komme raskt i gang og selge.",
-      inc: ["Logo med varianter og fargepalett", "Designhåndbok (PDF)", "Salgspresentasjon, 10–15 sider", "Én runde revisjon"] },
+      inc: ["Logo med varianter og fargepalett", "Designhåndbok (PDF)", "Ferdig salgspresentasjon, 10–15 sider", "Én runde revisjon"] },
     profil: { name: "Visuell profil", price: 29990, from: true, url: "/visuell-profil", for: "Deg som vil bygge en merkevare som holder over tid.",
       inc: ["Oppstartsmøte og strategi", "Logo i 2–3 konsepter, to runder revisjon", "Farger, typografi og grafiske elementer", "Bildestil og fullstendig designmanual", "Maler: visittkort, brev, presentasjon, e-postsignatur og sosiale medier"] },
     web: { name: "Nettside", price: 24990, from: true, url: "/nettside", for: "Deg som har profilen på plass og trenger en side som gir henvendelser.",
