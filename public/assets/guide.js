@@ -4,7 +4,7 @@
   function nok(n) { return n.toLocaleString("nb-NO").replace(/ /g, " "); }
   var PKG = {
     logo: { name: "Logo", price: 8990, from: true, url: "/logo-design", for: "Deg som bare trenger en logo.",
-      inc: ["Logo i 2 konsepter", "Én runde revisjon", "Varianter: liggende, stående og symbol", "Farger", "Alle filformater for skjerm og trykk"] },
+      inc: ["Logo i 2 konsepter", "Én runde revisjon", "Varianter: liggende, stående og symbol", "Farger", "Filer som SVG og PNG, i mørk og lys variant, for skjerm og trykk"] },
     start: { name: "Startpakke", price: 14990, from: false, url: "/startpakke", for: "Deg som skal komme raskt i gang og selge.",
       inc: ["Logo med varianter og fargepalett", "Designhåndbok (PDF)", "Salgspresentasjon, 10–15 sider", "Én runde revisjon"] },
     profil: { name: "Visuell profil", price: 29990, from: true, url: "/visuell-profil", for: "Deg som vil bygge en merkevare som holder over tid.",
