@@ -18,7 +18,7 @@ TEL = "+4746938750"
 TEL_SHOW = "46 93 87 50"
 MAIL = "info@noedesign.no"
 LINKEDIN = "https://www.linkedin.com/company/noedesign"
-VERSION = "7"
+VERSION = "8"
 
 IMG_WIDTHS = {}
 for f in (PUB / "img").glob("*.webp"):
@@ -62,7 +62,7 @@ BUSINESS = {
     "areaServed": [{"@type": "City", "name": "Oslo"}, {"@type": "Country", "name": "Norge"}],
     "priceRange": "kr 8 990–49 990",
     "founder": {"@type": "Person", "name": "Marius Moen", "jobTitle": "Grafisk designer", "image": f"{SITE}/img/marius-640.webp"},
-    "foundingDate": "2016",
+    "foundingDate": "2018",
     "legalName": "Moen Design",
     "vatID": "NO921420544MVA",
     "identifier": {"@type": "PropertyValue", "propertyID": "orgnr", "value": "921420544"},

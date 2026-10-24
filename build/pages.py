@@ -198,7 +198,7 @@ def home(c):
   <div class="hero-copy">
     <span class="eyebrow">Grafisk designer i Oslo · oppdrag i hele Norge</span>
     <h1 class="h-xl">Logo, nettside og film for <em>små bedrifter</em>.</h1>
-    <p class="lede">Fra én designer, til fast pris. Jeg har laget identitet for kaféer, restauranter og nyoppstartede bedrifter siden 2016, og du snakker med meg fra første prat til ferdig levering.</p>
+    <p class="lede">Fra én designer, til fast pris. Jeg har laget identitet for kaféer, restauranter og nyoppstartede bedrifter siden 2018, og du snakker med meg fra første prat til ferdig levering.</p>
     <div class="btns"><a class="btn" href="{c["CAL"]}" target="_blank" rel="noopener">Book en gratis prat <span class="sq" aria-hidden="true"></span></a><a class="btn ghost" href="/finn-riktig-pakke">Finn riktig pakke</a></div>
     <div class="pricebox"><div class="p">14 990 kr<small>eks. mva</small></div><b>Startpakke</b><span>Logo, designhåndbok og salgspresentasjon.</span><a class="textlink" href="/priser">Se alle priser</a></div>
     <div class="hero-quote"><q>Effektiv, proff og engasjert!</q><span>Madelene, Java &amp; Mocca</span></div>
@@ -245,7 +245,7 @@ def home(c):
   <div class="stack">
     <span class="eyebrow">Hvem du jobber med</span>
     <h2 class="h-l">Hei, jeg er Marius.</h2>
-    <p class="lede">Jeg har drevet noedesign siden 2016. Jeg lager logoer, profiler og nettsider for små bedrifter, mest i Oslo, men også i Lofoten. Jeg lager også dokumentarfilm, og det samme blikket bruker jeg når en bedrift trenger en kort film.</p>
+    <p class="lede">Jeg har drevet noedesign siden 2018. Jeg lager logoer, profiler og nettsider for små bedrifter, mest i Oslo, men også i Lofoten. Jeg lager også dokumentarfilm, og det samme blikket bruker jeg når en bedrift trenger en kort film.</p>
     <p><a class="textlink" href="/om">Mer om meg</a></p>
   </div>
 </div></section>
@@ -647,7 +647,7 @@ def om(c):
 <section class="section tight" style="padding-top:0"><div class="wrap about">
   {c["pic"]("marius", "Portrett av Marius Moen", "(max-width: 760px) 260px, 320px", eager=True)}
   <div class="prose">
-    <p class="lede">Jeg har drevet noedesign siden 2016. Jeg lager logoer, visuelle profiler og nettsider for små bedrifter og nyoppstartede, mest i Oslo, men også i Lofoten, der jeg er mye.</p>
+    <p class="lede">Jeg har drevet noedesign siden 2018. Jeg lager logoer, visuelle profiler og nettsider for små bedrifter og nyoppstartede, mest i Oslo, men også i Lofoten, der jeg er mye.</p>
     <p>Du får ikke en selger først og en designer etterpå. Du snakker med meg fra første prat til ferdig levering, og det er jeg som tegner, skriver og bygger.</p>
     <p>Jeg lager også film. Dokumentarene mine fra Lofoten og havet lager jeg gjennom <a class="textlink" href="https://stoyta.no" target="_blank" rel="noopener">Støyta</a>, og det samme blikket bruker jeg når en kafé, et hotell eller en butikk trenger en kort film til nettsiden.</p>
     <p>I tillegg setter jeg opp og kjører Google- og Meta-annonser, blant annet for Fluid i Oslo. Derfor tenker jeg alltid på hvordan det jeg lager skal gi deg kunder, ikke bare hvordan det ser ut.</p>
@@ -666,7 +666,7 @@ def om(c):
 </div></section>
 {c["cta_band"]()}'''
     return dict(path="/om", id="om", title="Om Marius Moen, grafisk designer i Oslo | noedesign",
-                desc="Marius Moen har drevet noedesign siden 2016. Logo, profil, nettside og film for små bedrifter i Oslo og Lofoten, fra én person hele veien.",
+                desc="Marius Moen har drevet noedesign siden 2018. Logo, profil, nettside og film for små bedrifter i Oslo og Lofoten, fra én person hele veien.",
                 body=body, ld=[c["breadcrumbs_ld"](crumbs)])
 
 
