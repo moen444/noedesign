@@ -338,7 +338,7 @@ def startpakke(c):
   <div class="grid g3">
     <div class="diff"><span class="n">01</span><h3>Logo og visuell identitet</h3><p>Logo med primær- og sekundærversjon, mørk og lys variant. Fargepalett og typografi valgt for å fungere både på trykk og skjerm.</p><p class="small muted">SVG og PNG · fargepalett · typografi · varianter</p></div>
     <div class="diff"><span class="n">02</span><h3>Designhåndbok</h3><p>Et dokument som viser nøyaktig hvordan merkevaren skal brukes: fargeverdier, fonter, logoregler og eksempler. Slik holder uttrykket seg likt, også når andre lager materiell.</p><p class="small muted">PDF · bruksregler · eksempler</p></div>
-    <div class="diff"><span class="n">03</span><h3>Salgspresentasjon</h3><p>En ferdig presentasjon i den nye profilen, klar til å vise kunder, investorer eller samarbeidspartnere. Du bytter inn ditt eget innhold, og alt ser allerede bra ut.</p><p class="small muted">PowerPoint eller Google Slides · 10–15 sider · redigerbar</p></div>
+    <div class="diff"><span class="n">03</span><h3>Salgspresentasjon</h3><p>En ferdig salgspresentasjon på 10–15 sider, med profesjonelt design og innhold utviklet ut fra informasjonen du deler om virksomheten din. Leveres som en redigerbar PowerPoint- eller Google Slides-presentasjon.</p><p class="small muted">PowerPoint eller Google Slides · 10–15 sider · redigerbar · én revisjonsrunde. Omfattende research, merkevarestrategi og ekstra tekstproduksjon prises separat etter avtale.</p></div>
   </div>
   <div class="gallery" style="margin-top:40px">
     <figure>{c["pic"]("brochure", "Oransje designhåndbok slått opp", "(max-width: 640px) 100vw, 50vw")}</figure>
@@ -352,7 +352,7 @@ def startpakke(c):
     return service_page(
         c, "/startpakke", "startpakke", "Startpakke",
         "Startpakken – logo, designhåndbok og pitch | noedesign",
-        "Startpakken fra noedesign: logo, designhåndbok og en ferdig salgspresentasjon på 10–15 sider. Fast pris 14 990 kr eks. mva. Klar til bruk fra dag én.",
+        "Startpakken fra noedesign: logo, designhåndbok og en ferdig salgspresentasjon på 10–15 sider, skrevet ut fra det du forteller meg. Fast pris 14 990 kr eks. mva.",
         "Startpakke", "Alt du trenger for å se <em>profesjonell</em> ut fra dag én.",
         "Logo, designhåndbok og salgspresentasjon, levert som én komplett pakke. For deg som skal i gang og trenger å selge, ikke bare se bra ut.",
         "magazine", "Designhåndbok og trykksaker i ny profil",
@@ -361,9 +361,9 @@ def startpakke(c):
         PKGS["start"]["inc"] + ["Alle filer ryddig organisert og klare til bruk"],
         "For nyoppstartede bedrifter og de som vil fornye seg raskt. Det eneste i pakken du ikke får andre steder, er salgspresentasjonen.",
         extra, by_slug("java-mocca", "slice-pizza", "private-living"),
-        [("Hvorfor en salgspresentasjon?", "Fordi en ny bedrift trenger å selge. En ferdig presentasjon i din egen profil gjør det enklere å vise fram tilbudet til kunder, investorer og partnere, uten at du må lage den selv."),
+        [("Hvorfor en salgspresentasjon?", "Fordi en ny bedrift trenger å selge. En ferdig presentasjon i din egen profil gjør det enklere å vise fram tilbudet til kunder, investorer og partnere. Jeg utvikler innholdet ut fra informasjonen du deler om virksomheten din, så du slipper å lage den fra bunnen."),
          ("Hva er forskjellen på Startpakken og Visuell profil?", "Startpakken gir deg logo, designhåndbok og presentasjon raskt. Visuell profil starter med et strategimøte og gir deg flere konsepter, et fullt designsystem og maler for alt fra visittkort til sosiale medier."),
-         ("Kan jeg redigere presentasjonen selv?", "Ja. Den leveres i PowerPoint eller Google Slides, så du kan bytte inn eget innhold."),
+         ("Kan jeg redigere presentasjonen selv?", "Ja. Den leveres som en redigerbar PowerPoint- eller Google Slides-presentasjon, så du kan oppdatere den selv senere. Én revisjonsrunde er inkludert. Omfattende research, merkevarestrategi og ekstra tekstproduksjon prises separat etter avtale."),
          ("Hvor lang tid tar det?", "Vi avtaler leveringstid i den første praten. Har du en frist, si fra, så planlegger vi ut fra den."),
          ("Hva skjer etter levering?", "Du eier filene og kan bruke dem som du vil. Trenger du endringer senere, gjør jeg det til timepris 1 150 kr.")],
         "Startpakke", "Startpakke: logo, designhåndbok og salgspresentasjon", 14990, ld_from=False)
