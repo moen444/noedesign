@@ -132,12 +132,12 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 }
 
 /* Logorad */
-.logos { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 28px 24px; padding-block: 28px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.logos { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 28px 40px; padding-block: 28px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .logos .label { font-size: 0.85rem; color: var(--muted); max-width: 16ch; }
 .logos .label b { display: block; color: var(--ink); font-size: 1rem; }
-.logos img { height: 36px; width: auto; opacity: .78; }
-.logos img.wide { height: 27px; }
-.logos img.xwide { height: 18px; }
+.logos img { height: 40px; width: auto; opacity: .78; }
+.logos img.wide { height: 30px; }
+.logos img.xwide { height: 20px; }
 @media (max-width: 640px) { .logos { justify-content: flex-start; gap: 22px 28px; } .logos img { height: 32px; } .logos img.wide { height: 22px; } .logos img.xwide { height: 16px; } .logos .label { flex-basis: 100%; max-width: none; } }
 
 /* Grid og kort */
