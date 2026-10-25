@@ -109,3 +109,9 @@
   from = "/*"
   to = "/404.html"
   status = 404
+
+[[redirects]]
+  from = "/arbeid/premiumruss"
+  to = "/arbeid"
+  status = 301
+  force = true
