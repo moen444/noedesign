@@ -5,11 +5,11 @@ PKGS = {
                  for_="For deg som bare trenger en logo.",
                  inc=["Logo i 2 konsepter", "Én runde revisjon", "Varianter: liggende, stående og symbol", "Farger", "Filer som SVG og PNG, i mørk og lys variant, for skjerm og trykk"]),
     "start": dict(name="Startpakke", price="14 990", frm=False, url="/startpakke", num=14990,
-                  for_="For deg som skal komme raskt i gang og selge.",
+                  for_="For deg som vil komme raskt i gang, uten strategifase.",
                   inc=["Logo med varianter og fargepalett", "Designhåndbok (PDF)", "Salgspresentasjon, 10–15 sider", "Én runde revisjon"]),
     "profil": dict(name="Visuell profil", price="29 990", frm=True, url="/visuell-profil", num=29990,
-                   for_="For deg som vil bygge en merkevare som holder over tid.",
-                   inc=["Oppstartsmøte og strategi", "Logo i 2–3 konsepter, to runder revisjon", "Farger, typografi og grafiske elementer", "Bildestil og fullstendig designmanual", "Maler for visittkort, brev, presentasjon, e-postsignatur og sosiale medier"]),
+                   for_="For deg som vil bygge en hel merkevare, ikke bare komme i gang.",
+                   inc=["Alt i Startpakken", "Strategimøte og 2–3 logokonsepter", "To runder revisjon", "Grafiske elementer og bildestil", "Fullstendig designmanual", "Maler: visittkort, brev, e-postsignatur og 3–5 for sosiale medier"]),
     "web": dict(name="Nettside", price="24 990", frm=True, url="/nettside", num=24990,
                 for_="For deg som har profilen og trenger en side som gir henvendelser.",
                 inc=["Opptil 5 sider", "Tilpasset mobil", "SEO-grunnoppsett", "Kontaktskjema"]),
@@ -151,8 +151,8 @@ def assure():
 def logos_row():
     return '''<div class="logos" aria-label="Kunder">
   <p class="label"><b>5/5 på Google</b>Kunder jeg har jobbet med</p>
-  <img src="/img/logo-java.png" width="156" height="160" alt="Java St. Hanshaugen" loading="lazy">
-  <img src="/img/logo-premiumruss.png" width="296" height="160" alt="Premiumruss" loading="lazy">
+  <img class="big" src="/img/logo-java.png" width="156" height="160" alt="Java St. Hanshaugen" loading="lazy">
+  <img class="wide" src="/img/logo-bacalao.png" width="869" height="160" alt="Bacalao Bar" loading="lazy">
   <img class="xwide" src="/img/logo-elektrokraft.png" width="1339" height="160" alt="Elektro Kraft" loading="lazy">
   <img class="wide" src="/img/logo-kjeoya.png" width="823" height="160" alt="Kjeøya Lodge" loading="lazy">
   <img class="wide" src="/img/logo-fluid.png" width="360" height="97" alt="Fluid" loading="lazy">
@@ -425,7 +425,7 @@ def profil_page(c):
         extra, by_slug("java-mocca", "bacalao-bar", "cold-water-kids"),
         [("Hvorfor starter du med et strategimøte?", "Fordi en profil må bygge på hvem du er for og hvem du konkurrerer med. Vi bruker 1–2 timer på målgruppe, konkurrenter og hvordan bedriften skal oppleves, før jeg tegner noe."),
          ("Kan du jobbe videre med logoen vi har?", "Ja. Vi kan bygge profilen rundt en logo du har i dag, eller tegne den om med renere linjer og bedre varianter uten at den mister gjenkjennelsen."),
-         ("Hvilke maler får jeg?", "Visittkort, brevmal, presentasjonsmal, e-postsignatur og 3–5 maler for sosiale medier, alle i din nye profil."),
+         ("Hvilke maler får jeg?", "Alt som er i Startpakken, inkludert salgspresentasjonen, pluss visittkort, brevmal, e-postsignatur og 3–5 maler for sosiale medier, alle i din nye profil."),
          ("Kan jeg få nettside samtidig?", "Ja. Profil + nettside koster fra 49 990 kr, og da henger alt sammen fra start.")],
         "Visuell profil", "Visuell profil", 29990)
 
@@ -435,8 +435,8 @@ def compare_table():
         ("Logo", "2 konsepter", "Med varianter", "2–3 konsepter"),
         ("Revisjonsrunder", "1", "1", "2"),
         ("Fargepalett og typografi", "Farger", "y", "Fullt system"),
-        ("Designhåndbok", "n", "y", "Fullstendig designmanual"),
-        ("Salgspresentasjon", "n", "10–15 sider", "Presentasjonsmal"),
+        ("Designhåndbok", "n", "PDF", "Fullstendig designmanual"),
+        ("Salgspresentasjon", "n", "10–15 sider", "10–15 sider"),
         ("Strategimøte", "n", "n", "y"),
         ("Grafiske elementer og bildestil", "n", "n", "y"),
         ("Maler for visittkort, brev og sosiale medier", "n", "n", "y"),
