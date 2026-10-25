@@ -203,6 +203,11 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .cta-strip .btn { background: var(--dot); color: var(--ink); border-color: var(--dot); }
 .cta-strip .textlink { color: var(--paper); }
 
+.slides { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.slides figure { margin: 0; }
+.slides img { width: 100%; height: auto; display: block; border-radius: var(--r); border: 1px solid var(--line); }
+@media (max-width: 640px) { .slides { grid-template-columns: 1fr; } }
+
 /* Pakker */
 .pkgs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
 @media (max-width: 1060px) { .pkgs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

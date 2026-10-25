@@ -233,7 +233,7 @@ def home(c):
   <div class="reasons">
     <article class="why-card"><div class="img">{c["pic"]("roa-showreel-poster", "Fra filmen for Roots of Alpicella", "(max-width: 860px) 100vw, 33vw")}<span class="n">01</span></div>
       <h3>Design, nettside og film fra samme hånd</h3><p>Logo, profil, nettside og film fra én person. Du slipper å koordinere tre leverandører, og alt henger sammen fra start.</p></article>
-    <article class="why-card"><div class="img">{c["pic"]("pitch", "Salgspresentasjon fra Startpakken", "(max-width: 860px) 100vw, 33vw")}<span class="n">02</span></div>
+    <article class="why-card"><div class="img">{c["pic"]("ekpitch-mockup", "Salgspresentasjon for Elektro Kraft fra Startpakken", "(max-width: 860px) 100vw, 33vw")}<span class="n">02</span></div>
       <h3>Laget for å selge, ikke bare for å se bra ut</h3><p>Startpakken gir deg en ferdig salgspresentasjon, ikke bare en logo. Jeg kjører også annonser for nettbutikker, så jeg vet hva som gir henvendelser.</p></article>
     <article class="why-card"><div class="img">{c["pic"]("java-cups", "Kopper for Java & Mocca", "(max-width: 860px) 100vw, 33vw")}<span class="n">03</span></div>
       <h3>Kjenner kafé og restaurant</h3><p>Java &amp; Mocca, Slice Pizza og Bacalao Bar. Jeg vet at logoen skal fungere på kopper, esker, menyer og skilt, ikke bare på skjerm.</p></article>
@@ -370,7 +370,17 @@ def startpakke(c):
   </div>
   <div class="gallery" style="margin-top:40px">
     <figure>{c["pic"]("brochure", "Oransje designhåndbok slått opp", "(max-width: 640px) 100vw, 50vw")}</figure>
-    <figure>{c["pic"]("pitch", "Salgspresentasjon vist på flere skjermer", "(max-width: 640px) 100vw, 50vw")}</figure>
+    <figure>{c["pic"]("ekpitch-mockup", "Salgspresentasjon for Elektro Kraft vist på skjerm og som sider", "(max-width: 640px) 100vw, 50vw")}</figure>
+  </div>
+</div></section>
+<section class="section white"><div class="wrap">
+  <div class="head"><span class="eyebrow">Eksempel</span><h2 class="h-l">Slik ser en salgspresentasjon ut</h2>
+    <p class="lede">Utdrag fra presentasjonen jeg laget til Elektro Kraft. Samme profil som logoen og håndboken, klar til å brukes i møter og på e-post.</p></div>
+  <div class="slides">
+    <figure>{c["pic"]("ekpitch-omslag", "Forside i Elektro Krafts salgspresentasjon", "(max-width: 640px) 100vw, 50vw")}</figure>
+    <figure>{c["pic"]("ekpitch-utfordring", "Utfordringen: tre utfordringer i Elektro Krafts presentasjon", "(max-width: 640px) 100vw, 50vw")}</figure>
+    <figure>{c["pic"]("ekpitch-losning", "Løsningen i Elektro Krafts presentasjon", "(max-width: 640px) 100vw, 50vw")}</figure>
+    <figure>{c["pic"]("ekpitch-prosess", "Slik fungerer det: prosessen i Elektro Krafts presentasjon", "(max-width: 640px) 100vw, 50vw")}</figure>
   </div>
 </div></section>
 <section class="section white"><div class="wrap">
@@ -536,7 +546,7 @@ def kafe_page(c):
 
 SERVICES = [
     ("/logo-design", "Logo", "Logo med varianter og fargepalett.", "ek-logo"),
-    ("/startpakke", "Startpakke", "Logo, designhåndbok og salgspresentasjon.", "pitch"),
+    ("/startpakke", "Startpakke", "Logo, designhåndbok og salgspresentasjon.", "ekpitch-mockup"),
     ("/visuell-profil", "Visuell profil", "Strategi, flere konsepter og full designmanual.", "roa-handbook"),
     ("/nettside", "Nettside", "Egen nettside som er lett å finne og enkel å bruke.", "bacalao-desk"),
     ("/grafisk-design", "Trykk og klær", "Visittkort, flyers, meny, emballasje og tøy.", "flyer"),
