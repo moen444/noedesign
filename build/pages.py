@@ -249,8 +249,8 @@ def home(c):
 <section class="section" id="priser"><div class="wrap">
   <div class="head"><span class="eyebrow">Tjenester og priser</span><h2 class="h-l">Priser fra 8 990 kr. Fast pris før vi starter.</h2>
     <p class="lede">Usikker på hva du trenger? <a class="textlink" href="/finn-riktig-pakke">Svar på fire spørsmål</a>, så får du et forslag med pris.</p></div>
-  {packages(c)}
-  <p class="small muted" style="margin-top:16px">Alle priser er eks. mva. Endelig pris avtaler vi etter en kort prat.</p>
+  {mini_cards()}
+  <p class="small muted" style="margin-top:16px">Alle priser er eks. mva. Endelig pris avtaler vi etter en kort prat. <a class="textlink" href="/priser">Se alle detaljer og sammenligning</a></p>
 </div></section>
 
 <section class="section dark"><div class="wrap">
@@ -560,6 +560,26 @@ def services_grid(c):
 <div class="meta"><h3>{t}</h3><span class="arrow" aria-hidden="true">→</span></div><p class="svc-d">{d}</p></a>'''
         for h, t, d, img in SERVICES)
     return '<div class="work svcs">' + out + "</div>"
+
+
+MINI = [
+    ("/logo-design", "Logo", "fra 8 990 kr", "Logo med varianter og fargepalett."),
+    ("/startpakke", "Startpakke", "14 990 kr", "Logo, designhåndbok og salgspresentasjon.", True),
+    ("/visuell-profil", "Visuell profil", "fra 29 990 kr", "Strategi, flere konsepter og full designmanual."),
+    ("/nettside", "Nettside", "fra 24 990 kr", "Opptil fem sider som gir henvendelser."),
+    ("/grafisk-design", "Trykk og klær", "fra 3 990 kr", "Visittkort, flyers, meny og emballasje."),
+    ("/kafe-og-restaurant", "Kafé og restaurant", "14 990 kr", "Logo og profil for serveringssteder."),
+]
+
+
+def mini_cards():
+    out = []
+    for m in MINI:
+        rec = len(m) > 4
+        badge = '<span class="mbadge">Mest valgt</span>' if rec else ""
+        out.append(f'''<a class="mini{' rec' if rec else ''}" href="{m[0]}">{badge}<div class="mtop"><h3>{m[1]}</h3><span class="arrow" aria-hidden="true">→</span></div>
+<div class="mprice">{m[2]}</div><p>{m[3]}</p></a>''')
+    return '<div class="minis">' + "".join(out) + "</div>"
 
 
 def priser(c):
