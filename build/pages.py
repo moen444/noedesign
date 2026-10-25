@@ -376,7 +376,7 @@ def startpakke(c):
 <section class="section white"><div class="wrap">
   <div class="head"><span class="eyebrow">Eksempel</span><h2 class="h-l">Slik ser en salgspresentasjon ut</h2>
     <p class="lede">Utdrag fra presentasjonen jeg laget til Elektro Kraft. Samme profil som logoen og håndboken, klar til å brukes i møter og på e-post.</p></div>
-  <div class="slides">
+  <div class="deckslides">
     <figure>{c["pic"]("ekpitch-omslag", "Forside i Elektro Krafts salgspresentasjon", "(max-width: 640px) 100vw, 50vw")}</figure>
     <figure>{c["pic"]("ekpitch-utfordring", "Utfordringen: tre utfordringer i Elektro Krafts presentasjon", "(max-width: 640px) 100vw, 50vw")}</figure>
     <figure>{c["pic"]("ekpitch-losning", "Løsningen i Elektro Krafts presentasjon", "(max-width: 640px) 100vw, 50vw")}</figure>
