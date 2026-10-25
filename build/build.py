@@ -18,7 +18,7 @@ TEL = "+4746938750"
 TEL_SHOW = "46 93 87 50"
 MAIL = "info@noedesign.no"
 LINKEDIN = "https://www.linkedin.com/company/noedesign"
-VERSION = "19"
+VERSION = "20"
 
 IMG_WIDTHS = {}
 for f in (PUB / "img").glob("*.webp"):
@@ -69,7 +69,7 @@ BUSINESS = {
     "sameAs": [LINKEDIN],
 }
 
-NAV = [("/arbeid", "Arbeid"), ("/priser", "Priser"), ("/om", "Om meg"), ("/kontakt", "Kontakt")]
+NAV = [("/arbeid", "Arbeid"), ("/priser", "Tjenester"), ("/om", "Om"), ("/kontakt", "Kontakt")]
 
 
 def header(path):
@@ -98,7 +98,7 @@ def footer():
       <li><a href="/grafisk-design">Grafisk design og trykk</a></li><li><a href="/kafe-og-restaurant">Kafé og restaurant</a></li>
     </ul></div>
     <div><h2>Mer</h2><ul>
-      <li><a href="/arbeid">Arbeid</a></li><li><a href="/priser">Priser</a></li><li><a href="/finn-riktig-pakke">Finn riktig pakke</a></li>
+      <li><a href="/arbeid">Arbeid</a></li><li><a href="/priser">Tjenester og priser</a></li><li><a href="/finn-riktig-pakke">Finn riktig pakke</a></li>
       <li><a href="/om">Om meg</a></li><li><a href="/personvern">Personvern</a></li>
     </ul></div>
     <div><h2>Kontakt</h2><ul>
