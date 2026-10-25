@@ -180,6 +180,9 @@ def hero_rotator(c):
     <figcaption>{"".join(caps)}</figcaption></figure>'''
 
 
+FEATURED = ["roots-of-alpicella", "java-mocca", "elektro-kraft"]
+
+
 def work_grid(c, cases=None, first_big=True):
     cases = cases or CASES
     out = []
@@ -224,23 +227,26 @@ def home(c):
 </div>
 <div class="wrap">{logos_row()}</div>
 
-<section class="section"><div class="wrap">
+<section class="section dark why-sec"><div class="wrap">
   <div class="head"><span class="eyebrow">Hvorfor meg</span><h2 class="h-l">Én person som kan <em>hele</em> jobben.</h2>
     <p class="lede">De fleste designere leverer en logo. Jeg leverer det bedriften trenger for å bli lagt merke til og få de første kundene.</p></div>
-  <div class="grid g3">
-    <div class="diff"><span class="n">01</span><h3>Design, nettside og film fra samme hånd</h3><p>Logo, profil, nettside og film fra én person. Du slipper å koordinere tre leverandører, og alt henger sammen fra start.</p></div>
-    <div class="diff"><span class="n">02</span><h3>Laget for å selge, ikke bare for å se bra ut</h3><p>Startpakken gir deg en ferdig salgspresentasjon, ikke bare en logo. Jeg kjører også annonser for nettbutikker, så jeg vet hva som gir henvendelser.</p></div>
-    <div class="diff"><span class="n">03</span><h3>Kjenner kafé og restaurant</h3><p>Java &amp; Mocca, Slice Pizza og Bacalao Bar. Jeg vet at logoen skal fungere på kopper, esker, menyer og skilt, ikke bare på skjerm.</p></div>
+  <div class="reasons">
+    <article class="why-card"><div class="img">{c["pic"]("roa-showreel-poster", "Fra filmen for Roots of Alpicella", "(max-width: 860px) 100vw, 33vw")}<span class="n">01</span></div>
+      <h3>Design, nettside og film fra samme hånd</h3><p>Logo, profil, nettside og film fra én person. Du slipper å koordinere tre leverandører, og alt henger sammen fra start.</p></article>
+    <article class="why-card"><div class="img">{c["pic"]("pitch", "Salgspresentasjon fra Startpakken", "(max-width: 860px) 100vw, 33vw")}<span class="n">02</span></div>
+      <h3>Laget for å selge, ikke bare for å se bra ut</h3><p>Startpakken gir deg en ferdig salgspresentasjon, ikke bare en logo. Jeg kjører også annonser for nettbutikker, så jeg vet hva som gir henvendelser.</p></article>
+    <article class="why-card"><div class="img">{c["pic"]("java-cups", "Kopper for Java & Mocca", "(max-width: 860px) 100vw, 33vw")}<span class="n">03</span></div>
+      <h3>Kjenner kafé og restaurant</h3><p>Java &amp; Mocca, Slice Pizza og Bacalao Bar. Jeg vet at logoen skal fungere på kopper, esker, menyer og skilt, ikke bare på skjerm.</p></article>
   </div>
 </div></section>
 
 <section class="section tight"><div class="wrap">
   <div class="head"><span class="eyebrow">Utvalgt arbeid</span><h2 class="h-l">Noe av det jeg har laget</h2></div>
-  {work_grid(c)}
-  <p style="margin-top:28px"><a class="textlink" href="/arbeid">Se alt arbeid</a></p>
+  {work_grid(c, [cs for slug in FEATURED for cs in CASES if cs["slug"] == slug])}
+  <p style="margin-top:28px"><a class="textlink" href="/arbeid">Se alt arbeid ({len(CASES)})</a></p>
 </div></section>
 
-<section class="section white" id="priser"><div class="wrap">
+<section class="section" id="priser"><div class="wrap">
   <div class="head"><span class="eyebrow">Tjenester og priser</span><h2 class="h-l">Priser fra 8 990 kr. Fast pris før vi starter.</h2>
     <p class="lede">Usikker på hva du trenger? <a class="textlink" href="/finn-riktig-pakke">Svar på fire spørsmål</a>, så får du et forslag med pris.</p></div>
   {packages(c)}
@@ -523,6 +529,24 @@ def kafe_page(c):
         "Startpakke", "Logo og profil for kafé og restaurant", 14990, ld_from=False)
 
 
+SERVICES = [
+    ("/logo-design", "Logo", "Logo med varianter og fargepalett.", "ek-logo"),
+    ("/startpakke", "Startpakke", "Logo, designhåndbok og salgspresentasjon.", "pitch"),
+    ("/visuell-profil", "Visuell profil", "Strategi, flere konsepter og full designmanual.", "roa-handbook"),
+    ("/nettside", "Nettside", "Egen nettside som er lett å finne og enkel å bruke.", "bacalao-desk"),
+    ("/grafisk-design", "Trykk og klær", "Visittkort, flyers, meny, emballasje og tøy.", "flyer"),
+    ("/kafe-og-restaurant", "Kafé og restaurant", "Logo, profil og nettside for serveringssteder.", "slice-restaurant"),
+]
+
+
+def services_grid(c):
+    out = "".join(
+        f'''<a class="item svc" href="{h}"><div class="img">{c["pic"](img, t, "(max-width: 860px) 50vw, 33vw")}</div>
+<div class="meta"><h3>{t}</h3><span class="arrow" aria-hidden="true">→</span></div><p class="svc-d">{d}</p></a>'''
+        for h, t, d, img in SERVICES)
+    return '<div class="work svcs">' + out + "</div>"
+
+
 def priser(c):
     f_html, f_ld = faq([
         ("Er prisene med eller uten mva?", "Alle priser er eks. mva."),
@@ -537,7 +561,12 @@ def priser(c):
   <h1 class="h-xl">Priser på logo, profil og nettside.</h1>
   <p class="lede">Priser fra 8 990 kr, og fast pris avtalt før vi starter. Usikker på hva du trenger? <a class="textlink" href="/finn-riktig-pakke">Svar på fire spørsmål</a>, så får du et forslag.</p>
 </div>
-<section class="section tight"><div class="wrap">{packages(c)}
+<section class="section tight"><div class="wrap">
+  <div class="head"><span class="eyebrow">Tjenester</span><h2 class="h-l">Hva trenger du hjelp med?</h2></div>
+  {services_grid(c)}
+</div></section>
+<section class="section" id="priser"><div class="wrap">
+  <div class="head"><span class="eyebrow">Priser</span><h2 class="h-l">Velg pakke.</h2></div>{packages(c)}
   <div class="addons"><div class="addon"><b>Timepris</b><span>Endringer og småjobber.</span><span class="p">1 150 kr</span></div></div>
   <p class="small muted" style="margin-top:16px">Alle priser er eks. mva.</p>
 </div></section>
