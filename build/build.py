@@ -18,7 +18,7 @@ TEL = "+4746938750"
 TEL_SHOW = "46 93 87 50"
 MAIL = "info@noedesign.no"
 LINKEDIN = "https://www.linkedin.com/company/noedesign"
-VERSION = "16"
+VERSION = "17"
 
 IMG_WIDTHS = {}
 for f in (PUB / "img").glob("*.webp"):
