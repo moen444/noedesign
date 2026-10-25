@@ -180,6 +180,9 @@ def hero_rotator(c):
     <figcaption>{"".join(caps)}</figcaption></figure>'''
 
 
+FEATURED = ["roots-of-alpicella", "java-mocca", "elektro-kraft"]
+
+
 def work_grid(c, cases=None, first_big=True):
     cases = cases or CASES
     out = []
@@ -236,8 +239,8 @@ def home(c):
 
 <section class="section tight"><div class="wrap">
   <div class="head"><span class="eyebrow">Utvalgt arbeid</span><h2 class="h-l">Noe av det jeg har laget</h2></div>
-  {work_grid(c)}
-  <p style="margin-top:28px"><a class="textlink" href="/arbeid">Se alt arbeid</a></p>
+  {work_grid(c, [cs for slug in FEATURED for cs in CASES if cs["slug"] == slug])}
+  <p style="margin-top:28px"><a class="textlink" href="/arbeid">Se alt arbeid ({len(CASES)})</a></p>
 </div></section>
 
 <section class="section" id="priser"><div class="wrap">
