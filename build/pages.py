@@ -150,7 +150,7 @@ def assure():
 
 def logos_row():
     return '''<div class="logos" aria-label="Kunder">
-  <p class="label"><b>5/5 på Google</b>Kunder jeg har jobbet med</p>
+  <p class="label"><b>5/5 på Google</b>5 anmeldelser fra kunder</p>
   <img class="big" src="/img/logo-java.png" width="156" height="160" alt="Java St. Hanshaugen" loading="lazy">
   <img class="wide" src="/img/logo-bacalao.png" width="869" height="160" alt="Bacalao Bar" loading="lazy">
   <img class="xwide" src="/img/logo-elektrokraft.png" width="1339" height="160" alt="Elektro Kraft" loading="lazy">
@@ -231,7 +231,7 @@ def home(c):
   <div class="head"><span class="eyebrow">Hvorfor meg</span><h2 class="h-l">Én person som kan <em>hele</em> jobben.</h2>
     <p class="lede">De fleste designere leverer en logo. Jeg leverer det bedriften trenger for å bli lagt merke til og få de første kundene.</p></div>
   <div class="reasons">
-    <article class="why-card"><div class="img">{c["pic"]("roa-showreel-poster", "Fra filmen for Roots of Alpicella", "(max-width: 860px) 100vw, 33vw")}<span class="n">01</span></div>
+    <article class="why-card"><div class="img">{c["pic"]("roa-web-desk", "Nettsiden for Roots of Alpicella på skjerm", "(max-width: 860px) 100vw, 33vw")}<span class="n">01</span></div>
       <h3>Design, nettside og film fra samme hånd</h3><p>Logo, profil, nettside og film fra én person. Du slipper å koordinere tre leverandører, og alt henger sammen fra start.</p></article>
     <article class="why-card"><div class="img">{c["pic"]("ekpitch-mockup", "Salgspresentasjon for Elektro Kraft fra Startpakken", "(max-width: 860px) 100vw, 33vw")}<span class="n">02</span></div>
       <h3>Laget for å selge, ikke bare for å se bra ut</h3><p>Startpakken gir deg en ferdig salgspresentasjon, ikke bare en logo. Jeg kjører også annonser for nettbutikker, så jeg vet hva som gir henvendelser.</p></article>
@@ -259,7 +259,7 @@ def home(c):
 </div></section>
 
 <section class="section"><div class="wrap">
-  <div class="head"><span class="eyebrow">Hva kundene sier</span><h2 class="h-l">5/5 på Google</h2></div>
+  <div class="head"><span class="eyebrow">Hva kundene sier</span><h2 class="h-l">5/5 på Google, 5 anmeldelser</h2></div>
   <div class="quotes">{quote_fig("kirsti")}{quote_fig("caroline")}{quote_fig("johanne")}</div>
 </div></section>
 
@@ -826,4 +826,6 @@ def build_all(c):
              priser(c), guide_page(c), arbeid(c), om(c), kontakt(c), takk(c), personvern(c), notfound(c)]
     for i, cs in enumerate(CASES):
         pages.append(case_page(c, cs, CASES[(i + 1) % len(CASES)]))
+    from guides import guide_pages
+    pages += guide_pages(c)
     return pages

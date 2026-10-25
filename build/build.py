@@ -18,7 +18,7 @@ TEL = "+4746938750"
 TEL_SHOW = "46 93 87 50"
 MAIL = "info@noedesign.no"
 LINKEDIN = "https://www.linkedin.com/company/noedesign"
-VERSION = "87"
+VERSION = "88"
 
 IMG_WIDTHS = {}
 for f in (PUB / "img").glob("*.webp"):
@@ -99,6 +99,7 @@ def footer():
     </ul></div>
     <div><h2>Mer</h2><ul>
       <li><a href="/arbeid">Arbeid</a></li><li><a href="/priser">Tjenester og priser</a></li><li><a href="/finn-riktig-pakke">Finn riktig pakke</a></li>
+      <li><a href="/guide/hva-koster-en-logo">Hva koster en logo?</a></li><li><a href="/guide/nettside-for-liten-bedrift">Nettside for liten bedrift</a></li>
       <li><a href="/om">Om meg</a></li><li><a href="/personvern">Personvern</a></li>
     </ul></div>
     <div><h2>Kontakt</h2><ul>
@@ -124,15 +125,15 @@ def contact_form(title="Fortell kort om bedriften din", default_service=""):
     <div class="field"><label for="k-navn">Navn</label><input id="k-navn" name="navn" required autocomplete="name"></div>
     <div class="field"><label for="k-epost">E-post</label><input id="k-epost" name="epost" type="email" required autocomplete="email"></div>
   </div>
-  <div class="row2">
-    <div class="field"><label for="k-tel">Telefon <span class="valgfri">(valgfritt)</span></label><input id="k-tel" name="telefon" type="tel" autocomplete="tel"></div>
-    <div class="field"><label for="k-bedrift">Bedrift <span class="valgfri">(valgfritt)</span></label><input id="k-bedrift" name="bedrift" autocomplete="organization"></div>
-  </div>
-  <div class="row2">
-    <div class="field"><label for="k-tjeneste">Hva trenger du?</label><select id="k-tjeneste" name="tjeneste">{o}</select></div>
-    <div class="field"><label for="k-budsjett">Budsjett (eks. mva)</label><select id="k-budsjett" name="budsjett"><option>Vet ikke</option><option>Logo, fra 8 990 kr</option><option>Startpakke, 14 990 kr</option><option>Nettside, fra 24 990 kr</option><option>Visuell profil, fra 29 990 kr</option><option>Profil + nettside, fra 49 990 kr</option><option>Over 50 000 kr</option></select></div>
-  </div>
+  <div class="field"><label for="k-tjeneste">Hva trenger du?</label><select id="k-tjeneste" name="tjeneste">{o}</select></div>
   <div class="field"><label for="k-melding">Kort om prosjektet</label><textarea id="k-melding" name="melding" required placeholder="Hva gjør bedriften, og hva trenger du hjelp med?"></textarea></div>
+  <details class="more"><summary>Legg til telefon, bedrift og budsjett <span class="valgfri">(valgfritt)</span></summary>
+    <div class="row2">
+      <div class="field"><label for="k-tel">Telefon</label><input id="k-tel" name="telefon" type="tel" autocomplete="tel"></div>
+      <div class="field"><label for="k-bedrift">Bedrift</label><input id="k-bedrift" name="bedrift" autocomplete="organization"></div>
+    </div>
+    <div class="field"><label for="k-budsjett">Budsjett (eks. mva)</label><select id="k-budsjett" name="budsjett"><option>Vet ikke</option><option>Logo, fra 8 990 kr</option><option>Startpakke, 14 990 kr</option><option>Nettside, fra 24 990 kr</option><option>Visuell profil, fra 29 990 kr</option><option>Profil + nettside, fra 49 990 kr</option><option>Over 50 000 kr</option></select></div>
+  </details>
   <p class="small muted">Jeg bruker opplysningene dine bare til å svare på henvendelsen. Les mer i <a class="textlink" href="/personvern">personvernerklæringen</a>.</p>
   <div class="btns"><button class="btn" type="submit">Send <span class="sq" aria-hidden="true"></span></button><span class="small muted">eller <a class="textlink" href="{CAL}" target="_blank" rel="noopener">book en gratis prat</a></span></div>
 </form>'''
@@ -232,7 +233,9 @@ def main():
             if pg["path"] != "/404.html": urls.append(pg["path"])
         if pg["body"].count("<h1") != 1: problems.append(f"H1-antall {pg['body'].count('<h1')}: {pg['path']}")
         write(pg["path"], page(pg["path"], t, d, pg["body"], pg["id"], pg.get("ld"), pg.get("noindex"), pg.get("og"), pg.get("scripts", "")))
-    sm = "".join(f"<url><loc>{SITE}{u}</loc></url>" for u in urls)
+    import datetime
+    today = datetime.date.today().isoformat()
+    sm = "".join(f"<url><loc>{SITE}{u}</loc><lastmod>{today}</lastmod></url>" for u in urls)
     (PUB / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>\n', encoding="utf-8")
     (PUB / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /takk\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
     print(f"Bygget {len(built)} sider.")
