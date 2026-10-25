@@ -146,7 +146,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .logos img.big { height: 58px; }
 .logos img.wide { height: 30px; }
 .logos img.xwide { height: 20px; }
-@media (max-width: 640px) { .logos { justify-content: flex-start; gap: 22px 28px; } .logos img { height: 32px; } .logos img.big { height: 46px; } .logos img.wide { height: 22px; } .logos img.xwide { height: 16px; } .logos .label { flex-basis: 100%; max-width: none; } }
+@media (max-width: 640px) { .logos { display: grid; grid-template-columns: 1fr 1fr; justify-items: center; align-items: center; gap: 30px 20px; padding-block: 32px; } .logos .label { grid-column: 1 / -1; justify-self: start; max-width: none; } .logos img { height: 42px; max-width: 100%; } .logos img.wide { height: 32px; } .logos img.xwide { grid-column: 1 / -1; height: 24px; } .logos img.big { height: 52px; } }
 
 /* Grid og kort */
 .grid { display: grid; gap: 20px; }
