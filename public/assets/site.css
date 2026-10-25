@@ -143,9 +143,10 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .logos .label { font-size: 0.85rem; color: var(--muted); max-width: 16ch; }
 .logos .label b { display: block; color: var(--ink); font-size: 1rem; }
 .logos img { height: 40px; width: auto; opacity: .78; }
+.logos img.big { height: 58px; }
 .logos img.wide { height: 30px; }
 .logos img.xwide { height: 20px; }
-@media (max-width: 640px) { .logos { justify-content: flex-start; gap: 22px 28px; } .logos img { height: 32px; } .logos img.wide { height: 22px; } .logos img.xwide { height: 16px; } .logos .label { flex-basis: 100%; max-width: none; } }
+@media (max-width: 640px) { .logos { justify-content: flex-start; gap: 22px 28px; } .logos img { height: 32px; } .logos img.big { height: 46px; } .logos img.wide { height: 22px; } .logos img.xwide { height: 16px; } .logos .label { flex-basis: 100%; max-width: none; } }
 
 /* Grid og kort */
 .grid { display: grid; gap: 20px; }
