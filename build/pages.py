@@ -5,11 +5,11 @@ PKGS = {
                  for_="For deg som bare trenger en logo.",
                  inc=["Logo i 2 konsepter", "Én runde revisjon", "Varianter: liggende, stående og symbol", "Farger", "Filer som SVG og PNG, i mørk og lys variant, for skjerm og trykk"]),
     "start": dict(name="Startpakke", price="14 990", frm=False, url="/startpakke", num=14990,
-                  for_="For deg som skal komme raskt i gang og selge.",
+                  for_="For deg som vil komme raskt i gang, uten strategifase.",
                   inc=["Logo med varianter og fargepalett", "Designhåndbok (PDF)", "Salgspresentasjon, 10–15 sider", "Én runde revisjon"]),
     "profil": dict(name="Visuell profil", price="29 990", frm=True, url="/visuell-profil", num=29990,
-                   for_="For deg som vil bygge en merkevare som holder over tid.",
-                   inc=["Oppstartsmøte og strategi", "Logo i 2–3 konsepter, to runder revisjon", "Farger, typografi og grafiske elementer", "Bildestil og fullstendig designmanual", "Maler for visittkort, brev, presentasjon, e-postsignatur og sosiale medier"]),
+                   for_="For deg som vil bygge en hel merkevare, ikke bare komme i gang.",
+                   inc=["Alt i Startpakken", "Strategimøte og 2–3 logokonsepter", "To runder revisjon", "Grafiske elementer og bildestil", "Fullstendig designmanual", "Maler: visittkort, brev, e-postsignatur og 3–5 for sosiale medier"]),
     "web": dict(name="Nettside", price="24 990", frm=True, url="/nettside", num=24990,
                 for_="For deg som har profilen og trenger en side som gir henvendelser.",
                 inc=["Opptil 5 sider", "Tilpasset mobil", "SEO-grunnoppsett", "Kontaktskjema"]),
@@ -119,7 +119,7 @@ def pkg_card(key, rec=False, badge="Mest valgt"):
     pr = ("fra " if p["frm"] else "") + p["price"]
     return f'''<article class="pkg{' rec' if rec else ''}">{b}<h3>{p["name"]}</h3>
 <div class="price">{pr} kr <small>eks. mva</small></div><p class="for">{p["for_"]}</p>{checks(p["inc"])}
-<a class="textlink" href="{p["url"]}">Les mer</a></article>'''
+<div class="acts"><a class="btn" href="{p["url"]}#kontakt">Få tilbud</a><a class="textlink" href="{p["url"]}">Les mer</a></div></article>'''
 
 
 def packages(c):
@@ -151,8 +151,8 @@ def assure():
 def logos_row():
     return '''<div class="logos" aria-label="Kunder">
   <p class="label"><b>5/5 på Google</b>Kunder jeg har jobbet med</p>
-  <img src="/img/logo-java.png" width="156" height="160" alt="Java St. Hanshaugen" loading="lazy">
-  <img src="/img/logo-premiumruss.png" width="296" height="160" alt="Premiumruss" loading="lazy">
+  <img class="big" src="/img/logo-java.png" width="156" height="160" alt="Java St. Hanshaugen" loading="lazy">
+  <img class="wide" src="/img/logo-bacalao.png" width="869" height="160" alt="Bacalao Bar" loading="lazy">
   <img class="xwide" src="/img/logo-elektrokraft.png" width="1339" height="160" alt="Elektro Kraft" loading="lazy">
   <img class="wide" src="/img/logo-kjeoya.png" width="823" height="160" alt="Kjeøya Lodge" loading="lazy">
   <img class="wide" src="/img/logo-fluid.png" width="360" height="97" alt="Fluid" loading="lazy">
@@ -178,6 +178,9 @@ def hero_rotator(c):
     return f'''<figure class="hero-media rotator" aria-roledescription="bildeserie" aria-label="Utvalgt arbeid">
     <a class="slides" href="/arbeid/{HERO_SLIDES[0][4]}" tabindex="-1" aria-hidden="true">{"".join(imgs)}</a>
     <figcaption>{"".join(caps)}</figcaption></figure>'''
+
+
+FEATURED = ["roots-of-alpicella", "java-mocca", "elektro-kraft"]
 
 
 def work_grid(c, cases=None, first_big=True):
@@ -224,27 +227,30 @@ def home(c):
 </div>
 <div class="wrap">{logos_row()}</div>
 
-<section class="section"><div class="wrap">
+<section class="section dark why-sec"><div class="wrap">
   <div class="head"><span class="eyebrow">Hvorfor meg</span><h2 class="h-l">Én person som kan <em>hele</em> jobben.</h2>
     <p class="lede">De fleste designere leverer en logo. Jeg leverer det bedriften trenger for å bli lagt merke til og få de første kundene.</p></div>
-  <div class="grid g3">
-    <div class="diff"><span class="n">01</span><h3>Design, nettside og film fra samme hånd</h3><p>Logo, profil, nettside og film fra én person. Du slipper å koordinere tre leverandører, og alt henger sammen fra start.</p></div>
-    <div class="diff"><span class="n">02</span><h3>Laget for å selge, ikke bare for å se bra ut</h3><p>Startpakken gir deg en ferdig salgspresentasjon, ikke bare en logo. Jeg kjører også annonser for nettbutikker, så jeg vet hva som gir henvendelser.</p></div>
-    <div class="diff"><span class="n">03</span><h3>Kjenner kafé og restaurant</h3><p>Java &amp; Mocca, Slice Pizza og Bacalao Bar. Jeg vet at logoen skal fungere på kopper, esker, menyer og skilt, ikke bare på skjerm.</p></div>
+  <div class="reasons">
+    <article class="why-card"><div class="img">{c["pic"]("roa-showreel-poster", "Fra filmen for Roots of Alpicella", "(max-width: 860px) 100vw, 33vw")}<span class="n">01</span></div>
+      <h3>Design, nettside og film fra samme hånd</h3><p>Logo, profil, nettside og film fra én person. Du slipper å koordinere tre leverandører, og alt henger sammen fra start.</p></article>
+    <article class="why-card"><div class="img">{c["pic"]("ekpitch-mockup", "Salgspresentasjon for Elektro Kraft fra Startpakken", "(max-width: 860px) 100vw, 33vw")}<span class="n">02</span></div>
+      <h3>Laget for å selge, ikke bare for å se bra ut</h3><p>Startpakken gir deg en ferdig salgspresentasjon, ikke bare en logo. Jeg kjører også annonser for nettbutikker, så jeg vet hva som gir henvendelser.</p></article>
+    <article class="why-card"><div class="img">{c["pic"]("java-cups", "Kopper for Java & Mocca", "(max-width: 860px) 100vw, 33vw")}<span class="n">03</span></div>
+      <h3>Kjenner kafé og restaurant</h3><p>Java &amp; Mocca, Slice Pizza og Bacalao Bar. Jeg vet at logoen skal fungere på kopper, esker, menyer og skilt, ikke bare på skjerm.</p></article>
   </div>
 </div></section>
 
 <section class="section tight"><div class="wrap">
   <div class="head"><span class="eyebrow">Utvalgt arbeid</span><h2 class="h-l">Noe av det jeg har laget</h2></div>
-  {work_grid(c)}
-  <p style="margin-top:28px"><a class="textlink" href="/arbeid">Se alt arbeid</a></p>
+  {work_grid(c, [cs for slug in FEATURED for cs in CASES if cs["slug"] == slug])}
+  <p style="margin-top:28px"><a class="textlink" href="/arbeid">Se alt arbeid ({len(CASES)})</a></p>
 </div></section>
 
-<section class="section white" id="priser"><div class="wrap">
+<section class="section" id="priser"><div class="wrap">
   <div class="head"><span class="eyebrow">Tjenester og priser</span><h2 class="h-l">Priser fra 8 990 kr. Fast pris før vi starter.</h2>
     <p class="lede">Usikker på hva du trenger? <a class="textlink" href="/finn-riktig-pakke">Svar på fire spørsmål</a>, så får du et forslag med pris.</p></div>
-  {packages(c)}
-  <p class="small muted" style="margin-top:16px">Alle priser er eks. mva. Endelig pris avtaler vi etter en kort prat.</p>
+  {mini_cards()}
+  <p class="small muted" style="margin-top:16px">Alle priser er eks. mva. Endelig pris avtaler vi etter en kort prat. <a class="textlink" href="/priser">Se alle detaljer og sammenligning</a></p>
 </div></section>
 
 <section class="section dark"><div class="wrap">
@@ -272,6 +278,9 @@ def home(c):
                 body=body, ld=[], og="og-default.jpg")
 
 
+CTA_LABEL = {"logo": "logo", "startpakke": "Startpakke", "profil": "visuell profil", "nettside": "nettside", "grafisk": "trykksaker", "kafe": "logo og profil"}
+
+
 def service_page(c, path, pid, crumb, title, desc, eyebrow, h1, lede, image, image_alt, price_html, inc_title, inc, who, extra, cases, faqs, service, ld_name, ld_price, ld_from=True):
     f_html, f_ld = faq(faqs)
     crumbs = [("Forside", "/"), (crumb, path)]
@@ -290,6 +299,8 @@ def service_page(c, path, pid, crumb, title, desc, eyebrow, h1, lede, image, ima
   <div class="stack"><span class="eyebrow">Hva du får</span><h2 class="h-l">{inc_title}</h2><p class="lede">{who}</p></div>
   <div class="stack">{checks(inc)}</div>
 </div></section>
+<section class="cta-strip"><div class="wrap"><p><b>Passer dette for deg?</b> Få en fast pris innen én arbeidsdag.</p>
+  <div class="btns"><a class="btn" href="#kontakt">Få tilbud på {CTA_LABEL.get(pid, crumb)} <span class="sq" aria-hidden="true"></span></a><a class="textlink" href="{c["CAL"]}" target="_blank" rel="noopener">Book gratis prat</a></div></div></section>
 {extra}
 <section class="section"><div class="wrap">
   <div class="head"><span class="eyebrow">Slik jobber vi</span><h2 class="h-l">Fire steg, ingen overraskelser</h2></div>
@@ -359,7 +370,17 @@ def startpakke(c):
   </div>
   <div class="gallery" style="margin-top:40px">
     <figure>{c["pic"]("brochure", "Oransje designhåndbok slått opp", "(max-width: 640px) 100vw, 50vw")}</figure>
-    <figure>{c["pic"]("pitch", "Salgspresentasjon vist på flere skjermer", "(max-width: 640px) 100vw, 50vw")}</figure>
+    <figure>{c["pic"]("ekpitch-mockup", "Salgspresentasjon for Elektro Kraft vist på skjerm og som sider", "(max-width: 640px) 100vw, 50vw")}</figure>
+  </div>
+</div></section>
+<section class="section white"><div class="wrap">
+  <div class="head"><span class="eyebrow">Eksempel</span><h2 class="h-l">Slik ser en salgspresentasjon ut</h2>
+    <p class="lede">Utdrag fra presentasjonen jeg laget til Elektro Kraft. Samme profil som logoen og håndboken, klar til å brukes i møter og på e-post.</p></div>
+  <div class="deckslides">
+    <figure>{c["pic"]("ekpitch-omslag", "Forside i Elektro Krafts salgspresentasjon", "(max-width: 640px) 100vw, 50vw")}</figure>
+    <figure>{c["pic"]("ekpitch-utfordring", "Utfordringen: tre utfordringer i Elektro Krafts presentasjon", "(max-width: 640px) 100vw, 50vw")}</figure>
+    <figure>{c["pic"]("ekpitch-losning", "Løsningen i Elektro Krafts presentasjon", "(max-width: 640px) 100vw, 50vw")}</figure>
+    <figure>{c["pic"]("ekpitch-prosess", "Slik fungerer det: prosessen i Elektro Krafts presentasjon", "(max-width: 640px) 100vw, 50vw")}</figure>
   </div>
 </div></section>
 <section class="section white"><div class="wrap">
@@ -404,7 +425,7 @@ def profil_page(c):
         extra, by_slug("java-mocca", "bacalao-bar", "cold-water-kids"),
         [("Hvorfor starter du med et strategimøte?", "Fordi en profil må bygge på hvem du er for og hvem du konkurrerer med. Vi bruker 1–2 timer på målgruppe, konkurrenter og hvordan bedriften skal oppleves, før jeg tegner noe."),
          ("Kan du jobbe videre med logoen vi har?", "Ja. Vi kan bygge profilen rundt en logo du har i dag, eller tegne den om med renere linjer og bedre varianter uten at den mister gjenkjennelsen."),
-         ("Hvilke maler får jeg?", "Visittkort, brevmal, presentasjonsmal, e-postsignatur og 3–5 maler for sosiale medier, alle i din nye profil."),
+         ("Hvilke maler får jeg?", "Alt som er i Startpakken, inkludert salgspresentasjonen, pluss visittkort, brevmal, e-postsignatur og 3–5 maler for sosiale medier, alle i din nye profil."),
          ("Kan jeg få nettside samtidig?", "Ja. Profil + nettside koster fra 49 990 kr, og da henger alt sammen fra start.")],
         "Visuell profil", "Visuell profil", 29990)
 
@@ -414,8 +435,8 @@ def compare_table():
         ("Logo", "2 konsepter", "Med varianter", "2–3 konsepter"),
         ("Revisjonsrunder", "1", "1", "2"),
         ("Fargepalett og typografi", "Farger", "y", "Fullt system"),
-        ("Designhåndbok", "n", "y", "Fullstendig designmanual"),
-        ("Salgspresentasjon", "n", "10–15 sider", "Presentasjonsmal"),
+        ("Designhåndbok", "n", "PDF", "Fullstendig designmanual"),
+        ("Salgspresentasjon", "n", "10–15 sider", "10–15 sider"),
         ("Strategimøte", "n", "n", "y"),
         ("Grafiske elementer og bildestil", "n", "n", "y"),
         ("Maler for visittkort, brev og sosiale medier", "n", "n", "y"),
@@ -523,6 +544,44 @@ def kafe_page(c):
         "Startpakke", "Logo og profil for kafé og restaurant", 14990, ld_from=False)
 
 
+SERVICES = [
+    ("/logo-design", "Logo", "Logo med varianter og fargepalett.", "ek-logo"),
+    ("/startpakke", "Startpakke", "Logo, designhåndbok og salgspresentasjon.", "ekpitch-mockup"),
+    ("/visuell-profil", "Visuell profil", "Strategi, flere konsepter og full designmanual.", "roa-handbook"),
+    ("/nettside", "Nettside", "Egen nettside som er lett å finne og enkel å bruke.", "bacalao-desk"),
+    ("/grafisk-design", "Trykk og klær", "Visittkort, flyers, meny, emballasje og tøy.", "flyer"),
+    ("/kafe-og-restaurant", "Kafé og restaurant", "Logo, profil og nettside for serveringssteder.", "slice-restaurant"),
+]
+
+
+def services_grid(c):
+    out = "".join(
+        f'''<a class="item svc" href="{h}"><div class="img">{c["pic"](img, t, "(max-width: 860px) 50vw, 33vw")}</div>
+<div class="meta"><h3>{t}</h3><span class="arrow" aria-hidden="true">→</span></div><p class="svc-d">{d}</p></a>'''
+        for h, t, d, img in SERVICES)
+    return '<div class="work svcs">' + out + "</div>"
+
+
+MINI = [
+    ("/logo-design", "Logo", "fra 8 990 kr", "Logo med varianter og fargepalett."),
+    ("/startpakke", "Startpakke", "14 990 kr", "Logo, designhåndbok og salgspresentasjon.", True),
+    ("/visuell-profil", "Visuell profil", "fra 29 990 kr", "Strategi, flere konsepter og full designmanual."),
+    ("/nettside", "Nettside", "fra 24 990 kr", "Opptil fem sider som gir henvendelser."),
+    ("/grafisk-design", "Trykk og klær", "fra 3 990 kr", "Visittkort, flyers, meny og emballasje."),
+    ("/kafe-og-restaurant", "Kafé og restaurant", "14 990 kr", "Logo og profil for serveringssteder."),
+]
+
+
+def mini_cards():
+    out = []
+    for m in MINI:
+        rec = len(m) > 4
+        badge = '<span class="mbadge">Mest valgt</span>' if rec else ""
+        out.append(f'''<a class="mini{' rec' if rec else ''}" href="{m[0]}">{badge}<div class="mtop"><h3>{m[1]}</h3><span class="arrow" aria-hidden="true">→</span></div>
+<div class="mprice">{m[2]}</div><p>{m[3]}</p></a>''')
+    return '<div class="minis">' + "".join(out) + "</div>"
+
+
 def priser(c):
     f_html, f_ld = faq([
         ("Er prisene med eller uten mva?", "Alle priser er eks. mva."),
@@ -537,7 +596,12 @@ def priser(c):
   <h1 class="h-xl">Priser på logo, profil og nettside.</h1>
   <p class="lede">Priser fra 8 990 kr, og fast pris avtalt før vi starter. Usikker på hva du trenger? <a class="textlink" href="/finn-riktig-pakke">Svar på fire spørsmål</a>, så får du et forslag.</p>
 </div>
-<section class="section tight"><div class="wrap">{packages(c)}
+<section class="section tight"><div class="wrap">
+  <div class="head"><span class="eyebrow">Tjenester</span><h2 class="h-l">Hva trenger du hjelp med?</h2></div>
+  {services_grid(c)}
+</div></section>
+<section class="section" id="priser"><div class="wrap">
+  <div class="head"><span class="eyebrow">Priser</span><h2 class="h-l">Velg pakke.</h2></div>{packages(c)}
   <div class="addons"><div class="addon"><b>Timepris</b><span>Endringer og småjobber.</span><span class="p">1 150 kr</span></div></div>
   <p class="small muted" style="margin-top:16px">Alle priser er eks. mva.</p>
 </div></section>
