@@ -79,13 +79,14 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .site-header.scrolled { border-bottom-color: var(--line); }
 .hdr { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 74px; }
 .logo img { height: 24px; width: auto; }
-.nav { display: flex; align-items: center; gap: 26px; font-size: 0.97rem; font-weight: 500; }
+.nav { display: flex; align-items: center; gap: clamp(14px, 1.5vw, 24px); font-size: 0.97rem; font-weight: 500; white-space: nowrap; }
 .nav a { text-decoration: none; }
 .nav a:hover, .nav a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--dot); text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .nav .btn { min-height: 42px; padding: 0 18px; font-size: 0.95rem; }
 .nav .tel { font-variant-numeric: tabular-nums; }
+@media (max-width: 1360px) { .nav .tel { display: none; } }
 .menu { display: none; }
-@media (max-width: 960px) {
+@media (max-width: 1180px) {
   .nav { display: none; }
   .menu { display: block; position: relative; }
   .menu summary { list-style: none; cursor: pointer; min-height: 44px; padding: 0 16px; border: 1.5px solid var(--line); border-radius: 999px; display: inline-flex; align-items: center; font-weight: 600; background: var(--white); }
