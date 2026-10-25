@@ -84,9 +84,9 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .nav a:hover, .nav a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--dot); text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .nav .btn { min-height: 42px; padding: 0 18px; font-size: 0.95rem; }
 .nav .tel { font-variant-numeric: tabular-nums; }
-@media (max-width: 1360px) { .nav .tel { display: none; } }
+@media (max-width: 1060px) { .nav .tel { display: none; } }
 .menu { display: none; }
-@media (max-width: 1180px) {
+@media (max-width: 960px) {
   .nav { display: none; }
   .menu { display: block; position: relative; }
   .menu summary { list-style: none; cursor: pointer; min-height: 44px; padding: 0 16px; border: 1.5px solid var(--line); border-radius: 999px; display: inline-flex; align-items: center; font-weight: 600; background: var(--white); }

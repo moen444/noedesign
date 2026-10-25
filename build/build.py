@@ -18,7 +18,7 @@ TEL = "+4746938750"
 TEL_SHOW = "46 93 87 50"
 MAIL = "info@noedesign.no"
 LINKEDIN = "https://www.linkedin.com/company/noedesign"
-VERSION = "18"
+VERSION = "19"
 
 IMG_WIDTHS = {}
 for f in (PUB / "img").glob("*.webp"):
@@ -69,8 +69,7 @@ BUSINESS = {
     "sameAs": [LINKEDIN],
 }
 
-NAV = [("/arbeid", "Arbeid"), ("/logo-design", "Logo"), ("/startpakke", "Startpakke"), ("/visuell-profil", "Profil"), ("/nettside", "Nettside"),
-       ("/priser", "Priser"), ("/om", "Om meg")]
+NAV = [("/arbeid", "Arbeid"), ("/priser", "Priser"), ("/om", "Om meg"), ("/kontakt", "Kontakt")]
 
 
 def header(path):
@@ -81,8 +80,8 @@ def header(path):
     return f'''<a class="skip" href="#innhold">Hopp til innholdet</a>
 <header class="site-header"><div class="wrap hdr">
   <a class="logo" href="/" aria-label="noedesign, til forsiden"><img src="/img/noedesign-dark.png" width="520" height="111" alt="noedesign"></a>
-  <nav class="nav" aria-label="Hovedmeny">{links}<a href="/kafe-og-restaurant">Kafé og restaurant</a><a href="/kontakt">Kontakt</a><a class="tel" href="tel:{TEL}">{TEL_SHOW}</a><a class="btn" href="/finn-riktig-pakke">Finn riktig pakke</a></nav>
-  <details class="menu"><summary>Meny</summary><div class="panel">{mlinks}<a href="/kafe-og-restaurant">Kafé og restaurant</a><a href="/kontakt">Kontakt</a><a class="btn" href="/finn-riktig-pakke">Finn riktig pakke</a></div></details>
+  <nav class="nav" aria-label="Hovedmeny">{links}<a class="tel" href="tel:{TEL}">{TEL_SHOW}</a><a class="btn" href="/finn-riktig-pakke">Finn riktig pakke</a></nav>
+  <details class="menu"><summary>Meny</summary><div class="panel">{mlinks}<a class="btn" href="/finn-riktig-pakke">Finn riktig pakke</a></div></details>
 </div></header>'''
 
 
