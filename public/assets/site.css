@@ -175,6 +175,11 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 @media (max-width: 860px) { .work { grid-template-columns: 1fr 1fr; } .work .item, .work .item.half { grid-column: span 1; } .work .item.big { grid-column: span 2; grid-row: auto; } }
 @media (max-width: 560px) { .work { grid-template-columns: 1fr; } .work .item, .work .item.big, .work .item.half { grid-column: span 1; } }
 
+.svcs .item .arrow { font-size: 1.3rem; transition: transform .25s ease; }
+.svcs .item:hover .arrow, .svcs .item:focus-visible .arrow { transform: translateX(6px); }
+.svcs .item:hover h3, .svcs .item:focus-visible h3 { text-decoration: underline; text-decoration-color: var(--dot); text-decoration-thickness: 2px; text-underline-offset: 5px; }
+.svcs .svc-d { font-size: 0.93rem; color: var(--muted); margin-top: -4px; }
+
 /* Pakker */
 .pkgs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
 @media (max-width: 1060px) { .pkgs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
