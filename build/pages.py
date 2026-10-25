@@ -119,7 +119,7 @@ def pkg_card(key, rec=False, badge="Mest valgt"):
     pr = ("fra " if p["frm"] else "") + p["price"]
     return f'''<article class="pkg{' rec' if rec else ''}">{b}<h3>{p["name"]}</h3>
 <div class="price">{pr} kr <small>eks. mva</small></div><p class="for">{p["for_"]}</p>{checks(p["inc"])}
-<a class="textlink" href="{p["url"]}">Les mer</a></article>'''
+<div class="acts"><a class="btn" href="{p["url"]}#kontakt">Få tilbud</a><a class="textlink" href="{p["url"]}">Les mer</a></div></article>'''
 
 
 def packages(c):
@@ -278,6 +278,9 @@ def home(c):
                 body=body, ld=[], og="og-default.jpg")
 
 
+CTA_LABEL = {"logo": "logo", "startpakke": "Startpakke", "profil": "visuell profil", "nettside": "nettside", "grafisk": "trykksaker", "kafe": "logo og profil"}
+
+
 def service_page(c, path, pid, crumb, title, desc, eyebrow, h1, lede, image, image_alt, price_html, inc_title, inc, who, extra, cases, faqs, service, ld_name, ld_price, ld_from=True):
     f_html, f_ld = faq(faqs)
     crumbs = [("Forside", "/"), (crumb, path)]
@@ -296,6 +299,8 @@ def service_page(c, path, pid, crumb, title, desc, eyebrow, h1, lede, image, ima
   <div class="stack"><span class="eyebrow">Hva du får</span><h2 class="h-l">{inc_title}</h2><p class="lede">{who}</p></div>
   <div class="stack">{checks(inc)}</div>
 </div></section>
+<section class="cta-strip"><div class="wrap"><p><b>Passer dette for deg?</b> Få en fast pris innen én arbeidsdag.</p>
+  <div class="btns"><a class="btn" href="#kontakt">Få tilbud på {CTA_LABEL.get(pid, crumb)} <span class="sq" aria-hidden="true"></span></a><a class="textlink" href="{c["CAL"]}" target="_blank" rel="noopener">Book gratis prat</a></div></div></section>
 {extra}
 <section class="section"><div class="wrap">
   <div class="head"><span class="eyebrow">Slik jobber vi</span><h2 class="h-l">Fire steg, ingen overraskelser</h2></div>
