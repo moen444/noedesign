@@ -18,7 +18,7 @@ TEL = "+4746938750"
 TEL_SHOW = "46 93 87 50"
 MAIL = "info@noedesign.no"
 LINKEDIN = "https://www.linkedin.com/company/noedesign"
-VERSION = "20"
+VERSION = "21"
 
 IMG_WIDTHS = {}
 for f in (PUB / "img").glob("*.webp"):
@@ -69,7 +69,7 @@ BUSINESS = {
     "sameAs": [LINKEDIN],
 }
 
-NAV = [("/arbeid", "Arbeid"), ("/priser", "Tjenester"), ("/om", "Om"), ("/kontakt", "Kontakt")]
+NAV = [("/arbeid", "Arbeid"), ("/priser", "Tjenester og priser"), ("/om", "Om"), ("/kontakt", "Kontakt")]
 
 
 def header(path):
