@@ -227,13 +227,16 @@ def home(c):
 </div>
 <div class="wrap">{logos_row()}</div>
 
-<section class="section"><div class="wrap">
+<section class="section dark why-sec"><div class="wrap">
   <div class="head"><span class="eyebrow">Hvorfor meg</span><h2 class="h-l">Én person som kan <em>hele</em> jobben.</h2>
     <p class="lede">De fleste designere leverer en logo. Jeg leverer det bedriften trenger for å bli lagt merke til og få de første kundene.</p></div>
-  <div class="grid g3">
-    <div class="diff"><span class="n">01</span><h3>Design, nettside og film fra samme hånd</h3><p>Logo, profil, nettside og film fra én person. Du slipper å koordinere tre leverandører, og alt henger sammen fra start.</p></div>
-    <div class="diff"><span class="n">02</span><h3>Laget for å selge, ikke bare for å se bra ut</h3><p>Startpakken gir deg en ferdig salgspresentasjon, ikke bare en logo. Jeg kjører også annonser for nettbutikker, så jeg vet hva som gir henvendelser.</p></div>
-    <div class="diff"><span class="n">03</span><h3>Kjenner kafé og restaurant</h3><p>Java &amp; Mocca, Slice Pizza og Bacalao Bar. Jeg vet at logoen skal fungere på kopper, esker, menyer og skilt, ikke bare på skjerm.</p></div>
+  <div class="reasons">
+    <article class="why-card"><div class="img">{c["pic"]("roa-showreel-poster", "Fra filmen for Roots of Alpicella", "(max-width: 860px) 100vw, 33vw")}<span class="n">01</span></div>
+      <h3>Design, nettside og film fra samme hånd</h3><p>Logo, profil, nettside og film fra én person. Du slipper å koordinere tre leverandører, og alt henger sammen fra start.</p></article>
+    <article class="why-card"><div class="img">{c["pic"]("pitch", "Salgspresentasjon fra Startpakken", "(max-width: 860px) 100vw, 33vw")}<span class="n">02</span></div>
+      <h3>Laget for å selge, ikke bare for å se bra ut</h3><p>Startpakken gir deg en ferdig salgspresentasjon, ikke bare en logo. Jeg kjører også annonser for nettbutikker, så jeg vet hva som gir henvendelser.</p></article>
+    <article class="why-card"><div class="img">{c["pic"]("java-cups", "Kopper for Java & Mocca", "(max-width: 860px) 100vw, 33vw")}<span class="n">03</span></div>
+      <h3>Kjenner kafé og restaurant</h3><p>Java &amp; Mocca, Slice Pizza og Bacalao Bar. Jeg vet at logoen skal fungere på kopper, esker, menyer og skilt, ikke bare på skjerm.</p></article>
   </div>
 </div></section>
 
