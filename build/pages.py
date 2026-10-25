@@ -161,10 +161,9 @@ def logos_row():
     return '''<div class="logos" aria-label="Kunder">
   <p class="label"><b>5/5 på Google</b>Kunder jeg har jobbet med</p>
   <img src="/img/logo-java.png" width="156" height="160" alt="Java St. Hanshaugen" loading="lazy">
-  <img src="/img/logo-sijabra.png" width="217" height="159" alt="Sijabra" loading="lazy">
-  <img class="wide" src="/img/logo-elektro.png" width="360" height="160" alt="Elektro Miljø" loading="lazy">
-  <img src="/img/logo-gamla.png" width="147" height="160" alt="Gamla beat bar og bakhage" loading="lazy">
-  <img src="/img/logo-mocean.png" width="257" height="160" alt="Mocean Creative" loading="lazy">
+  <img src="/img/logo-premiumruss.png" width="296" height="160" alt="Premiumruss" loading="lazy">
+  <img class="xwide" src="/img/logo-elektrokraft.png" width="1339" height="160" alt="Elektro Kraft" loading="lazy">
+  <img class="wide" src="/img/logo-kjeoya.png" width="823" height="160" alt="Kjeøya Lodge" loading="lazy">
   <img class="wide" src="/img/logo-fluid.png" width="360" height="97" alt="Fluid" loading="lazy">
 </div>'''
 
