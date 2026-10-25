@@ -150,7 +150,7 @@ def assure():
 
 def logos_row():
     return '''<div class="logos" aria-label="Kunder">
-  <p class="label"><b>5/5 på Google</b>Kunder jeg har jobbet med</p>
+  <p class="label"><b>5/5 på Google</b>5 anmeldelser fra kunder</p>
   <img class="big" src="/img/logo-java.png" width="156" height="160" alt="Java St. Hanshaugen" loading="lazy">
   <img class="wide" src="/img/logo-bacalao.png" width="869" height="160" alt="Bacalao Bar" loading="lazy">
   <img class="xwide" src="/img/logo-elektrokraft.png" width="1339" height="160" alt="Elektro Kraft" loading="lazy">
@@ -259,7 +259,7 @@ def home(c):
 </div></section>
 
 <section class="section"><div class="wrap">
-  <div class="head"><span class="eyebrow">Hva kundene sier</span><h2 class="h-l">5/5 på Google</h2></div>
+  <div class="head"><span class="eyebrow">Hva kundene sier</span><h2 class="h-l">5/5 på Google, 5 anmeldelser</h2></div>
   <div class="quotes">{quote_fig("kirsti")}{quote_fig("caroline")}{quote_fig("johanne")}</div>
 </div></section>
 
