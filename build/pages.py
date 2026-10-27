@@ -384,7 +384,7 @@ def startpakke(c):
 </div></section>
 <section class="section white"><div class="wrap">
   <div class="head"><span class="eyebrow">Tidligere kunder</span><h2 class="h-l">Det de sier om Startpakken</h2></div>
-  <div class="quotes" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">{quote_fig("elektro")}</div>
+  <div class="quotes" style="grid-template-columns:minmax(0,640px)">{quote_fig("elektro")}</div>
 </div></section>'''
     return service_page(
         c, "/startpakke", "startpakke", "Startpakke",
