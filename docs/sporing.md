@@ -24,13 +24,13 @@ All måling går via `window.ndTrack()` i `public/assets/site.js`. Hendelser som
 
 | Hendelse | Når | Parametere | Er det et lead? |
 | --- | --- | --- | --- |
-| `generate_lead` | /takk vises etter at et skjema faktisk er sendt i samme økt | `skjema` (kontakt / pakkeguide), `side` (siden skjemaet ble sendt fra), `tjeneste` (valget i kontaktskjemaet) eller `pakke` (pakken guiden anbefalte) | **Ja.** Dette er den reelle henvendelsen. |
+| `generate_lead` | /takk vises etter at et skjema er sendt fra nettleseren i samme økt | `skjema` (kontakt / pakkeguide), `side` (siden skjemaet ble sendt fra), `tjeneste` (valget i kontaktskjemaet) eller `pakke` (pakken guiden anbefalte) | **Ja, som mål på henvendelser.** Den betyr at en innsending har nådd takkesiden, ikke at Netlify har bekreftet og lagret den. |
 | `guide_fullfort` | Pakkeguiden viser en anbefaling. Én gang per svarkombinasjon per sidevisning. | `guide` (logo og profil / nettside), `anbefalt` (pakkenavn) | Nei. Interesse, ikke henvendelse. |
 | `kontakt_klikk` | Klikk på booking (Calendly), telefon eller e-post | `metode` (booking / ring / epost), `side` | Nei. Et klikk, ikke en avtale. Selve bookingen i Calendly måles ikke. |
 
 **Ingen dobbelttelling:** når et skjema sendes, lagres skjemanavn, side og pakke/tjeneste i `sessionStorage` (nøkkel `nd-lead`). På /takk brukes det én gang og slettes. Oppdatering av /takk, eller direkte besøk, gir ingen ny `generate_lead`. Det samme gjelder Google Ads-konverteringen når den slås på.
 
-**Fasit for antall henvendelser er Netlify Forms** (Netlify → Forms). GA4 viser hvor henvendelsene kommer fra. Små avvik er normalt: blokkert sporing og spam som Netlify avviser.
+**`generate_lead` er ikke en bekreftelse fra Netlify.** Hendelsen sendes fra nettleseren når takkesiden vises etter en innsending. Netlify kan likevel ha avvist innsendingen (for eksempel som spam), og besøkende som blokkerer sporing telles ikke. **Fasit for antall mottatte henvendelser er derfor Netlify Forms** (Netlify → Forms). Bruk GA4 til å se hvor henvendelsene kommer fra og hvilke sider som gir dem, og sammenlign med Netlify jevnlig.
 
 ## Slik følger du resultatene i GA4
 
