@@ -368,13 +368,14 @@ def startpakke(c):
     <div class="diff"><span class="n">03</span><h3>Salgspresentasjon</h3><p>En ferdig salgspresentasjon på 10–15 sider, med profesjonelt design og innhold utviklet ut fra informasjonen du deler om virksomheten din. Leveres som en redigerbar PowerPoint- eller Google Slides-presentasjon.</p><p class="small muted">PowerPoint eller Google Slides · 10–15 sider · redigerbar · én revisjonsrunde. Omfattende research, merkevarestrategi og ekstra tekstproduksjon prises separat etter avtale.</p></div>
   </div>
   <div class="gallery" style="margin-top:40px">
-    <figure>{c["pic"]("brochure", "Oransje designhåndbok slått opp", "(max-width: 640px) 100vw, 50vw")}</figure>
-    <figure>{c["pic"]("ekpitch-mockup", "Salgspresentasjon for Elektro Kraft vist på skjerm og som sider", "(max-width: 640px) 100vw, 50vw")}</figure>
+    <figure>{c["pic"]("ek-palett", "Fargepaletten i designhåndboken til Elektro Kraft", "(max-width: 640px) 100vw, 50vw")}</figure>
+    <figure>{c["pic"]("ek-symbol", "Symbolet i designhåndboken til Elektro Kraft, vist i tre fargevarianter", "(max-width: 640px) 100vw, 50vw")}</figure>
   </div>
 </div></section>
 <section class="section white"><div class="wrap">
   <div class="head"><span class="eyebrow">Eksempel</span><h2 class="h-l">Slik ser en salgspresentasjon ut</h2>
-    <p class="lede">Utdrag fra presentasjonen jeg laget til Elektro Kraft. Samme profil som logoen og håndboken, klar til å brukes i møter og på e-post.</p></div>
+    <p class="lede">Utdrag fra presentasjonen jeg laget til Elektro Kraft. Samme profil som logoen og håndboken, klar til å brukes i møter og på e-post.</p>
+    <p><a class="textlink" href="/arbeid/elektro-kraft">Se hele Elektro Kraft-casen</a></p></div>
   <div class="deckslides">
     <figure>{c["pic"]("ekpitch-omslag", "Forside i Elektro Krafts salgspresentasjon", "(max-width: 640px) 100vw, 50vw")}</figure>
     <figure>{c["pic"]("ekpitch-utfordring", "Utfordringen: tre utfordringer i Elektro Krafts presentasjon", "(max-width: 640px) 100vw, 50vw")}</figure>
@@ -383,7 +384,7 @@ def startpakke(c):
   </div>
 </div></section>
 <section class="section white"><div class="wrap">
-  <div class="head"><span class="eyebrow">Tidligere kunder</span><h2 class="h-l">Det de sier om Startpakken</h2></div>
+  <div class="head"><span class="eyebrow">Tidligere kunder</span><h2 class="h-l">Hva Elektro Kraft sier om Startpakken</h2></div>
   <div class="quotes" style="grid-template-columns:minmax(0,640px)">{quote_fig("elektro")}</div>
 </div></section>'''
     return service_page(
@@ -392,12 +393,12 @@ def startpakke(c):
         "Startpakken fra noedesign: logo, designhåndbok og en ferdig salgspresentasjon på 10–15 sider, skrevet ut fra det du forteller meg. Fast pris 14 990 kr eks. mva.",
         "Startpakke", "Alt du trenger for å se <em>profesjonell</em> ut fra dag én.",
         "Logo, designhåndbok og salgspresentasjon, levert som én komplett pakke. For deg som skal i gang og trenger å selge, ikke bare se bra ut.",
-        "magazine", "Designhåndbok og trykksaker i ny profil",
+        "ek-startpakke", "Startpakken til Elektro Kraft: en side fra designhåndboken, forsiden og en side fra salgspresentasjonen",
         pricebox("14 990", "Startpakke", "Fast pris, én runde revisjon inkludert.", frm=False),
         "En komplett start, ikke bare en logo",
         PKGS["start"]["inc"] + ["Alle filer ryddig organisert og klare til bruk"],
         "For nyoppstartede bedrifter og de som vil fornye seg raskt. Det eneste i pakken du ikke får andre steder, er salgspresentasjonen.",
-        extra, by_slug("java-mocca", "slice-pizza", "private-living"),
+        extra, by_slug("elektro-kraft", "java-mocca", "slice-pizza"),
         [("Hvorfor en salgspresentasjon?", "Fordi en ny bedrift trenger å selge. En ferdig presentasjon i din egen profil gjør det enklere å vise fram tilbudet til kunder, investorer og partnere. Jeg utvikler innholdet ut fra informasjonen du deler om virksomheten din, så du slipper å lage den fra bunnen."),
          ("Hva er forskjellen på Startpakken og Visuell profil?", "Startpakken gir deg logo, designhåndbok og presentasjon raskt. Visuell profil starter med et strategimøte og gir deg flere konsepter, et fullt designsystem og maler for alt fra visittkort til sosiale medier."),
          ("Kan jeg redigere presentasjonen selv?", "Ja. Den leveres som en redigerbar PowerPoint- eller Google Slides-presentasjon, så du kan oppdatere den selv senere. Én revisjonsrunde er inkludert. Omfattende research, merkevarestrategi og ekstra tekstproduksjon prises separat etter avtale."),
@@ -545,7 +546,7 @@ def kafe_page(c):
 
 SERVICES = [
     ("/logo-design", "Logo", "Logo med varianter og fargepalett.", "ek-logo"),
-    ("/startpakke", "Startpakke", "Logo, designhåndbok og salgspresentasjon.", "ekpitch-mockup"),
+    ("/startpakke", "Startpakke", "Logo, designhåndbok og salgspresentasjon.", "ek-startpakke-kort"),
     ("/visuell-profil", "Visuell profil", "Strategi, flere konsepter og full designmanual.", "roa-handbook"),
     ("/nettside", "Nettside", "Egen nettside som er lett å finne og enkel å bruke.", "bacalao-desk"),
     ("/grafisk-design", "Trykk og klær", "Visittkort, flyers, meny, emballasje og tøy.", "flyer"),

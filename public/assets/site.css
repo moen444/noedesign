@@ -3,7 +3,7 @@
    gul firkant fra i-prikken i logoen som eneste aksent. */
 
 @font-face { font-family: "Newsreader"; src: url(/fonts/newsreader-normal.woff2) format("woff2"); font-weight: 300 600; font-style: normal; font-display: swap; }
-@font-face { font-family: "Newsreader"; src: url(/fonts/newsreader-italic.woff2) format("woff2"); font-weight: 300 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url(/fonts/newsreader-italic.woff2) format("woff2"); font-weight: 300 600; font-style: italic; font-display: optional; } /* optional: hindrer at kursiv i H1 bryter linjen på nytt etter visning (CLS) */
 @font-face { font-family: "Hanken Grotesk"; src: url(/fonts/hanken-grotesk-normal.woff2) format("woff2"); font-weight: 400 800; font-style: normal; font-display: swap; }
 
 :root {
@@ -134,6 +134,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   .hero-copy { display: contents; }
   .hero > .hero-media { order: 1; margin-inline: calc(-1 * max(20px, env(safe-area-inset-left, 0px))); }
   .hero-copy > .pricebox, .hero-copy > .hero-quote { order: 2; }
+  /* Startpakke: fast pris er hovedargumentet, så prisboksen står rett under knappene, før bildet */
+  body[data-page="startpakke"] .hero-copy > .pricebox { order: 0; }
   .hero-media img { aspect-ratio: 4 / 5; max-height: 70vh; border-radius: 0; }
   .hero-media figcaption { padding-inline: max(20px, env(safe-area-inset-left, 0px)); }
 }
