@@ -202,10 +202,10 @@ def faq(items):
     return html, ld
 
 
-def service_ld(c, name, desc, url, price, frm=True):
+def service_ld(c, name, desc, url, price, frm=True, offer_name=None):
     return {"@context": "https://schema.org", "@type": "Service", "name": name, "description": desc,
             "provider": {"@id": c["SITE"] + "/#business"}, "areaServed": {"@type": "City", "name": "Oslo"}, "url": c["SITE"] + url,
-            "offers": {"@type": "Offer", "priceCurrency": "NOK", "price": str(price),
+            "offers": {"@type": "Offer", **({"name": offer_name} if offer_name else {}), "priceCurrency": "NOK", "price": str(price),
                        "priceSpecification": {"@type": "PriceSpecification", "price": str(price), "priceCurrency": "NOK",
                                               "valueAddedTaxIncluded": False, **({"minPrice": str(price)} if frm else {})}}}
 
@@ -277,10 +277,11 @@ def home(c):
                 body=body, ld=[], og="og-default.jpg")
 
 
-CTA_LABEL = {"logo": "logo", "startpakke": "Startpakke", "profil": "visuell profil", "nettside": "nettside", "grafisk": "trykksaker", "kafe": "logo og profil"}
+CTA_LABEL = {"logo": "logo", "startpakke": "Startpakke", "profil": "visuell profil", "nettside": "nettside", "grafisk": "trykksaker", "kafe": "design til kafé eller restaurant"}
 
 
-def service_page(c, path, pid, crumb, title, desc, eyebrow, h1, lede, image, image_alt, price_html, inc_title, inc, who, extra, cases, faqs, service, ld_name, ld_price, ld_from=True):
+def service_page(c, path, pid, crumb, title, desc, eyebrow, h1, lede, image, image_alt, price_html, inc_title, inc, who, extra, cases, faqs, service, ld_name, ld_price, ld_from=True,
+                 inc_html=None, before_cases="", cases_title="Relevante prosjekter", cases_lede="", ld_offer_name=None, ld_desc=None):
     f_html, f_ld = faq(faqs)
     crumbs = [("Forside", "/"), (crumb, path)]
     body = f'''<div class="wrap hero">
@@ -296,7 +297,7 @@ def service_page(c, path, pid, crumb, title, desc, eyebrow, h1, lede, image, ima
 </div>
 <section class="section white"><div class="wrap split">
   <div class="stack"><span class="eyebrow">Hva du får</span><h2 class="h-l">{inc_title}</h2><p class="lede">{who}</p></div>
-  <div class="stack">{checks(inc)}</div>
+  <div class="stack">{inc_html or checks(inc)}</div>
 </div></section>
 <section class="cta-strip"><div class="wrap"><p><b>Passer dette for deg?</b> Få en fast pris innen én arbeidsdag.</p>
   <div class="btns"><a class="btn" href="#kontakt">Få tilbud på {CTA_LABEL.get(pid, crumb)} <span class="sq" aria-hidden="true"></span></a><a class="textlink" href="{c["CAL"]}" target="_blank" rel="noopener">Book gratis prat</a></div></div></section>
@@ -306,8 +307,8 @@ def service_page(c, path, pid, crumb, title, desc, eyebrow, h1, lede, image, ima
   {steps()}
   <div style="margin-top:32px">{assure()}</div>
 </div></section>
-<section class="section white"><div class="wrap">
-  <div class="head"><span class="eyebrow">Arbeid</span><h2 class="h-l">Relevante prosjekter</h2></div>
+{before_cases}<section class="section white"><div class="wrap">
+  <div class="head"><span class="eyebrow">Arbeid</span><h2 class="h-l">{cases_title}</h2>{f'<p class="lede">{cases_lede}</p>' if cases_lede else ""}</div>
   {work_grid(c, cases, first_big=False)}
 </div></section>
 <section class="section"><div class="wrap split">
@@ -315,7 +316,7 @@ def service_page(c, path, pid, crumb, title, desc, eyebrow, h1, lede, image, ima
   {f_html}
 </div></section>
 {c["cta_band"](service=service)}'''
-    ld = [f_ld, c["breadcrumbs_ld"](crumbs), service_ld(c, ld_name, desc, path, ld_price, ld_from)]
+    ld = [f_ld, c["breadcrumbs_ld"](crumbs), service_ld(c, ld_name, ld_desc or desc, path, ld_price, ld_from, ld_offer_name)]
     return dict(path=path, id=pid, title=title, desc=desc, body=body, ld=ld)
 
 
@@ -515,16 +516,27 @@ def kafe_page(c):
   <div class="head"><span class="eyebrow">Det en kafé eller restaurant trenger</span><h2 class="h-l">Logoen skal fungere der gjestene er</h2>
     <p class="lede">En logo for servering skal tåle mer enn en skjerm. Den skal stå på kopper, esker, menyer, skilt og forklær, og den skal kjennes igjen fra andre siden av gata.</p></div>
   <div class="grid g4">
-    <div class="diff"><span class="n">01</span><h3>Logo og profil</h3><p>Som passer stemningen og fungerer i små og store størrelser.</p></div>
-    <div class="diff"><span class="n">02</span><h3>Kopper og emballasje</h3><p>Det kundene tar med seg ut døra, er den beste reklamen du har.</p></div>
-    <div class="diff"><span class="n">03</span><h3>Meny og skilt</h3><p>Lett å lese, lett å oppdatere, i samme stil som resten.</p></div>
-    <div class="diff"><span class="n">04</span><h3>Nettside og film</h3><p>Meny, åpningstider og booking på mobil, og en kort film som viser stedet.</p></div>
+    <div class="diff"><span class="n">01</span><h3>Logo og profil</h3><p>Som passer stemningen og fungerer i små og store størrelser.</p><p class="small muted">Logo og designhåndbok inngår i Startpakken. Full visuell profil fra 29 990 kr.</p></div>
+    <div class="diff"><span class="n">02</span><h3>Kopper og emballasje</h3><p>Det kundene tar med seg ut døra, er den beste reklamen du har.</p><p class="small muted">Separat · design fra 3 990 kr per produkt, trykk i tillegg</p></div>
+    <div class="diff"><span class="n">03</span><h3>Meny og skilt</h3><p>Lett å lese, lett å oppdatere, i samme stil som resten.</p><p class="small muted">Separat · meny fra 3 990 kr per produkt, skilt etter avtale</p></div>
+    <div class="diff"><span class="n">04</span><h3>Nettside og film</h3><p>Meny, åpningstider og booking på mobil, og en kort film som viser stedet.</p><p class="small muted">Separat · nettside fra 24 990 kr, film etter avtale</p></div>
   </div>
-</div></section>
-<section class="section white"><div class="wrap">
-  <div class="head"><span class="eyebrow">Hva de sier</span><h2 class="h-l">Fra kaféer og restauranter</h2></div>
-  <div class="quotes">{quote_fig("madelene_short")}{quote_fig("james")}{quote_fig("caroline")}</div>
 </div></section>'''
+    quotes = f'''<section class="section white"><div class="wrap">
+  <div class="head"><span class="eyebrow">Hva de sier</span><h2 class="h-l">Hva kundene sier</h2></div>
+  <div class="quotes">{quote_fig("madelene_short")}{quote_fig("james")}{quote_fig("caroline")}</div>
+</div></section>
+'''
+    lists = ('<h3 class="h-m">Startpakke · 14 990 kr</h3>'
+             + checks(PKGS["start"]["inc"])
+             + '<p class="small muted">Designhåndboken er en enkel guide til logo, farger og fonter. '
+               'Full <a class="textlink" href="/visuell-profil">visuell profil</a> med strategi, designmanual og maler er en egen pakke, fra 29 990 kr.</p>'
+             + '<h3 class="h-m" style="margin-top:12px">Kan også bestilles hver for seg</h3>'
+             + checks(["Bare logo: fra 8 990 kr", "Kopper, esker og emballasje: fra 3 990 kr per produkt",
+                       "Meny og andre trykksaker: fra 3 990 kr per produkt", "Skilt: etter avtale",
+                       "Nettside med meny, åpningstider og booking: fra 24 990 kr", "Kort film: etter avtale"])
+             + '<p class="small muted">Prisene på trykksaker og emballasje gjelder designarbeidet. Trykking og produksjon kommer i tillegg. '
+               'Du får fast pris før vi starter.</p>')
     return service_page(
         c, "/kafe-og-restaurant", "kafe", "Kafé og restaurant",
         "Logo og profil for kafé og restaurant i Oslo | noedesign",
@@ -532,16 +544,20 @@ def kafe_page(c):
         "Kafé og restaurant", "Logo og profil for <em>kafé og restaurant</em> i Oslo.",
         "Jeg har laget logoer, kopper, pizzaesker og nettsider for kaféer og restauranter i Oslo og Lofoten. Du får én designer som forstår hvordan gjestene møter merkevaren din.",
         "slice-restaurant", "Pizzaesker med Slice-logo i en restaurant",
-        pricebox("14 990", "Startpakke", "Logo, designhåndbok og presentasjon.", frm=False),
-        "Alt på ett sted",
+        pricebox("14 990", "Startpakke", "Logo, designhåndbok og salgspresentasjon. Meny, emballasje, skilt, nettside og film bestilles separat.", frm=False),
+        "Startpakken, eller bare det du trenger",
         ["Logo og visuell profil", "Kopper, esker og emballasje", "Meny, skilt og trykksaker", "Nettside med meny, åpningstider og booking", "Kort film til nettside og sosiale medier"],
-        "For nye og etablerte kaféer, bakerier, barer og restauranter som vil se like gode ut som maten og stemningen de serverer.",
+        "Starter du fra bunnen, gir Startpakken deg logo og et grunnlag å bygge videre på. Har du allerede logo, bestiller du bare det du trenger, med fast pris.",
         extra, by_slug("java-mocca", "slice-pizza", "bacalao-bar"),
-        [("Hva bør jeg starte med?", "For de fleste er Startpakken riktig: logo, designhåndbok og en presentasjon. Så kan kopper, meny og nettside komme når du er klar."),
-         ("Lager du design til kopper og emballasje?", "Ja. Jeg har laget take-away-kopper for Java og Mocca og pizzaesker for Slice. Jeg leverer trykkfiler tilpasset leverandøren din."),
+        [("Hva bør jeg starte med?", "Det kommer an på hva du har. Starter du fra bunnen, er Startpakken ofte riktig: logo, designhåndbok og salgspresentasjon for 14 990 kr. Har du allerede logo, kan du bestille meny, emballasje, nettside eller annet design hver for seg."),
+         ("Lager du design til kopper og emballasje?", "Ja. Jeg har laget take-away-kopper for Java og Mocca og pizzaesker for Slice. Jeg leverer trykkfiler tilpasset leverandøren din. Designet koster fra 3 990 kr per produkt eks. mva. Trykking kommer i tillegg."),
          ("Kan du lage nettside med meny og booking?", "Ja, som jeg gjorde for Bacalao Bar. Nettside koster fra 24 990 kr eks. mva."),
          ("Lager du film av restauranten?", "Ja. Jeg lager også film, og kan lage en kort film om stedet til nettside og sosiale medier. Pris etter avtale.")],
-        "Startpakke", "Logo og profil for kafé og restaurant", 14990, ld_from=False)
+        "", "Design for kafé og restaurant", 14990, ld_from=False,
+        inc_html=lists, before_cases=quotes, cases_title="Fra kaféer og restauranter",
+        cases_lede="Java &amp; Mocca fikk logoer og take-away-kopper, Slice Pizza logo og pizzaesker, og Bacalao Bar identitet og nettside med meny og booking.",
+        ld_offer_name="Startpakke",
+        ld_desc="Startpakke for kaféer og restauranter i Oslo: logo, designhåndbok og salgspresentasjon for 14 990 kr eks. mva. Meny, emballasje, skilt, nettside og film bestilles separat.")
 
 
 SERVICES = [
@@ -550,7 +566,7 @@ SERVICES = [
     ("/visuell-profil", "Visuell profil", "Strategi, flere konsepter og full designmanual.", "roa-handbook"),
     ("/nettside", "Nettside", "Egen nettside som er lett å finne og enkel å bruke.", "bacalao-desk"),
     ("/grafisk-design", "Trykk og klær", "Visittkort, flyers, meny, emballasje og tøy.", "flyer"),
-    ("/kafe-og-restaurant", "Kafé og restaurant", "Logo, profil og nettside for serveringssteder.", "slice-restaurant"),
+    ("/kafe-og-restaurant", "Kafé og restaurant", "Startpakke til 14 990 kr, eller meny, emballasje og nettside hver for seg.", "slice-restaurant"),
 ]
 
 
@@ -568,7 +584,7 @@ MINI = [
     ("/visuell-profil", "Visuell profil", "fra 29 990 kr", "Strategi, flere konsepter og full designmanual."),
     ("/nettside", "Nettside", "fra 24 990 kr", "Opptil fem sider som gir henvendelser."),
     ("/grafisk-design", "Trykk og klær", "fra 3 990 kr", "Visittkort, flyers, meny og emballasje."),
-    ("/kafe-og-restaurant", "Kafé og restaurant", "14 990 kr", "Logo og profil for serveringssteder."),
+    ("/kafe-og-restaurant", "Kafé og restaurant", "Startpakke · 14 990 kr", "Logo, designhåndbok og presentasjon, eller meny, emballasje og nettside hver for seg."),
 ]
 
 
