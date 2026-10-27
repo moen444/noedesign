@@ -1,0 +1,36 @@
+name: Byggekontroll
+
+# Sjekker at public/ er bygget fra build/. Endringer skal gjøres i build/pages.py
+# eller build/build.py, og så bygges med: python3 build/build.py
+# Feiler hvis noen har endret public/ direkte, eller glemt å bygge etter en endring.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  bygg:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Installer Pillow
+        run: pip install "pillow==12.*"
+      - name: Bygg siden
+        run: python3 build/build.py
+      - name: Sjekk at public/ er oppdatert
+        run: |
+          if ! git diff --quiet -- public; then
+            echo "::error::public/ stemmer ikke med build/. Kjør 'python3 build/build.py' og legg med endringene i public/."
+            git --no-pager diff --stat -- public
+            exit 1
+          fi
+          if [ -n "$(git status --porcelain --untracked-files=all -- public)" ]; then
+            echo "::error::Bygget lager filer i public/ som ikke er lagt til i git."
+            git status --porcelain -- public
+            exit 1
+          fi
+          echo "public/ stemmer med build/."

@@ -5,6 +5,8 @@ Statisk side, generert med Python.
 - Innhold: `build/pages.py` (sider, priser, sitater, caser)
 - Mal og hjelpefunksjoner: `build/build.py`
 - Bygg: `python3 build/build.py` → skriver til `public/`
+- **Endre aldri filer i `public/` direkte.** Gjør endringen i `build/`, bygg, og legg med både `build/` og `public/` i samme commit. GitHub-sjekken «Byggekontroll» feiler ellers.
+- `sitemap.xml` får ny `lastmod` bare for sider som har endret seg, så et nytt bygg uten endringer gir ingen diff.
 - Netlify publiserer `public/` direkte (ingen byggkommando). Redirects fra gamle Wix-URL-er ligger i `netlify.toml`.
 - Sporing: fyll inn ID-er i `public/assets/config.js`. Tomt = ingen sporing og ingen samtykkebanner.
 - Skjemaer: Netlify Forms («kontakt» og «pakkeguide»). Slå på formdeteksjon i Netlify.
