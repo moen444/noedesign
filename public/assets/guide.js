@@ -3,17 +3,17 @@
   var CAL = "https://calendly.com/noedesign-info/30min";
   function nok(n) { return n.toLocaleString("nb-NO").replace(/ /g, " "); }
   var PKG = {
-    logo: { name: "Logo", price: 8990, from: true, url: "/logo-design", for: "Deg som bare trenger en logo.",
+    logo: { name: "Logo", price: 8990, from: true, url: "/logo-design/", for: "Deg som bare trenger en logo.",
       inc: ["Logo i 2 konsepter", "Én runde revisjon", "Varianter: liggende, stående og symbol", "Farger", "Filer som SVG og PNG, i mørk og lys variant, for skjerm og trykk"] },
-    start: { name: "Startpakke", price: 14990, from: false, url: "/startpakke", for: "Deg som skal komme raskt i gang og selge.",
+    start: { name: "Startpakke", price: 14990, from: false, url: "/startpakke/", for: "Deg som skal komme raskt i gang og selge.",
       inc: ["Logo med varianter og fargepalett", "Designhåndbok (PDF)", "Ferdig salgspresentasjon, 10–15 sider", "Én runde revisjon"] },
-    profil: { name: "Visuell profil", price: 29990, from: true, url: "/visuell-profil", for: "Deg som vil bygge en merkevare som holder over tid.",
+    profil: { name: "Visuell profil", price: 29990, from: true, url: "/visuell-profil/", for: "Deg som vil bygge en merkevare som holder over tid.",
       inc: ["Oppstartsmøte og strategi", "Logo i 2–3 konsepter, to runder revisjon", "Farger, typografi og grafiske elementer", "Bildestil og fullstendig designmanual", "Maler: visittkort, brev, presentasjon, e-postsignatur og sosiale medier"] },
-    web: { name: "Nettside", price: 24990, from: true, url: "/nettside", for: "Deg som har profilen på plass og trenger en side som gir henvendelser.",
+    web: { name: "Nettside", price: 24990, from: true, url: "/nettside/", for: "Deg som har profilen på plass og trenger en side som gir henvendelser.",
       inc: ["Opptil 5 sider", "Tilpasset mobil", "SEO-grunnoppsett", "Kontaktskjema"] },
-    profilweb: { name: "Profil + nettside", price: 49990, from: true, url: "/priser", for: "Deg som vil ha alt på plass, samlet.",
+    profilweb: { name: "Profil + nettside", price: 49990, from: true, url: "/priser/", for: "Deg som vil ha alt på plass, samlet.",
       inc: ["Alt i Visuell profil", "Nettside med opptil 5 sider", "Tilpasset mobil og SEO-grunnoppsett", "Kontaktskjema"] },
-    startweb: { name: "Startpakke + nettside", price: 39980, from: true, url: "/priser", for: "Deg som vil i gang med logo og nettside uten full profil.",
+    startweb: { name: "Startpakke + nettside", price: 39980, from: true, url: "/priser/", for: "Deg som vil i gang med logo og nettside uten full profil.",
       inc: ["Alt i Startpakken", "Nettside med opptil 5 sider", "Tilpasset mobil og SEO-grunnoppsett", "Kontaktskjema"] }
   };
   var LADDER = ["logo", "start", "profil", "profilweb"];
