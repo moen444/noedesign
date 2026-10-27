@@ -669,7 +669,7 @@ def guide_page(c):
 <section class="section white"><div class="wrap">{assure()}</div></section>'''
     return dict(path="/finn-riktig-pakke", id="guide", title="Finn riktig designpakke på ett minutt | noedesign",
                 desc="Svar på fire spørsmål og få et forslag til logo, profil eller nettside med pris og innhold. Fast pris, ingen forpliktelser. Grafisk designer i Oslo.",
-                body=body, ld=[c["breadcrumbs_ld"](crumbs)], scripts='<script src="/assets/guide.js?v=1" defer></script>')
+                body=body, ld=[c["breadcrumbs_ld"](crumbs)], scripts='<script src="/assets/guide.js?v=2" defer></script>')
 
 
 def arbeid(c):

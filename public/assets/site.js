@@ -14,6 +14,29 @@
   function gtag() { window.dataLayer.push(arguments); }
   window.gtag = gtag;
 
+  /* Hendelser går via track(). Før samtykkevalget er lastet, venter de i kø, slik at
+     consent-innstillingen alltid kommer først. Ingen personopplysninger sendes. */
+  var ready = false, queue = [];
+  function track(name, params) {
+    if (!hasTracking) return;
+    if (ready) gtag("event", name, params || {});
+    else queue.push([name, params || {}]);
+  }
+  window.ndTrack = track;
+
+  /* En innsending lagres i sessionStorage når skjemaet sendes, og brukes én gang på /takk.
+     Oppdatering av takkesiden eller direkte besøk gir derfor ingen ny konvertering. */
+  var LEAD = "nd-lead";
+  function takeLead() {
+    try {
+      var raw = sessionStorage.getItem(LEAD);
+      if (!raw) return null;
+      sessionStorage.removeItem(LEAD);
+      var d = JSON.parse(raw);
+      return d && d.t && Date.now() - d.t < 30 * 60 * 1000 ? d : null;
+    } catch (e) { return null; }
+  }
+
   function loadTags(granted) {
     if (!hasTracking) return;
     gtag("consent", "default", {
@@ -29,12 +52,35 @@
     gtag("js", new Date());
     if (cfg.GA4_ID) gtag("config", cfg.GA4_ID);
     if (cfg.ADS_ID) gtag("config", cfg.ADS_ID);
-    // Konvertering på takkesiden
-    if (document.body.dataset.page === "takk" && cfg.ADS_ID && cfg.ADS_LEAD_LABEL) {
-      gtag("event", "conversion", { send_to: cfg.ADS_ID + "/" + cfg.ADS_LEAD_LABEL });
+    ready = true;
+    queue.forEach(function (q) { gtag("event", q[0], q[1]); });
+    queue = [];
+    // Konvertering på takkesiden: bare når det finnes en innsending fra denne økten
+    if (document.body.dataset.page === "takk") {
+      var lead = takeLead();
+      if (lead) {
+        if (cfg.ADS_ID && cfg.ADS_LEAD_LABEL) gtag("event", "conversion", { send_to: cfg.ADS_ID + "/" + cfg.ADS_LEAD_LABEL });
+        if (cfg.GA4_ID) {
+          var p = { skjema: lead.skjema, side: lead.side };
+          if (lead.pakke) p.pakke = lead.pakke;
+          if (lead.tjeneste) p.tjeneste = lead.tjeneste;
+          gtag("event", "generate_lead", p);
+        }
+      }
     }
-    if (document.body.dataset.page === "takk" && cfg.GA4_ID) gtag("event", "generate_lead");
   }
+
+  /* Husk hvilket skjema som ble sendt (bare skjemanavn, side og valgt pakke eller tjeneste).
+     submit utløses først når nettleserens validering er bestått. */
+  document.addEventListener("submit", function (e) {
+    var f = e.target, name = f && f.getAttribute && f.getAttribute("name");
+    if (!hasTracking || (name !== "kontakt" && name !== "pakkeguide")) return;
+    var d = { skjema: name, side: location.pathname, t: Date.now() };
+    var pk = f.querySelector("[name=pakke]"), tj = f.querySelector("[name=tjeneste]");
+    if (name === "pakkeguide" && pk && pk.value) d.pakke = pk.value;
+    if (name === "kontakt" && tj && tj.value) d.tjeneste = tj.value;
+    try { sessionStorage.setItem(LEAD, JSON.stringify(d)); } catch (err) {}
+  }, true);
 
   function stored() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
   function store(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
@@ -85,6 +131,6 @@
     var a = e.target.closest && e.target.closest("a[href^='tel:'], a[href^='mailto:'], a[href*='calendly.com']");
     if (!a || !hasTracking) return;
     var type = a.href.indexOf("tel:") === 0 ? "ring" : a.href.indexOf("mailto:") === 0 ? "epost" : "booking";
-    gtag("event", "kontakt_klikk", { metode: type });
+    track("kontakt_klikk", { metode: type, side: location.pathname });
   });
 })();
