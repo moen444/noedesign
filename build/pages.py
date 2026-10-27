@@ -23,7 +23,6 @@ QUOTES = {
     "james": ("Brukt Marius for å lage logo til en pizzeria. Rask, flink og enkel å jobbe sammen med! Anbefales!", "James", "Slice Pizza"),
     "johanne": ("For en fornøyelse å jobbe med Noe Design! Jeg hadde en idé om hva jeg ønsket for brandet mitt, og Marius leverte en pakke som var over all forventning.", "Johanne Regine Gustavsen", "Google-anmeldelse"),
     "elektro": ("En veldig god investering hvis man ønsker en tydeligere profil og et mer gjennomført førsteinntrykk.", "Elektro Kraft", "Startpakke"),
-    "premiumruss": ("Det å få på plass en ferdig visuell identitet gjorde det mye enklere å fremstå profesjonelt og helhetlig.", "Premiumruss", "Startpakke"),
 }
 
 CASES = [
@@ -385,7 +384,7 @@ def startpakke(c):
 </div></section>
 <section class="section white"><div class="wrap">
   <div class="head"><span class="eyebrow">Tidligere kunder</span><h2 class="h-l">Det de sier om Startpakken</h2></div>
-  <div class="quotes" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">{quote_fig("elektro")}{quote_fig("premiumruss")}</div>
+  <div class="quotes" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">{quote_fig("elektro")}</div>
 </div></section>'''
     return service_page(
         c, "/startpakke", "startpakke", "Startpakke",
