@@ -132,8 +132,18 @@
       el("span", { class: "lbl", text: lbl }), el("b", { text: p.name }), el("span", { text: (p.from ? "fra " : "") + nok(p.price) + " kr" }));
   }
 
+  /* Fullført guide: én hendelse per svarkombinasjon per sidevisning. Ikke en henvendelse. */
+  var tracked = {};
+  function trackDone(rec) {
+    var sig = guide + ":" + JSON.stringify(answers);
+    if (tracked[sig] || !window.ndTrack) return;
+    tracked[sig] = true;
+    window.ndTrack("guide_fullfort", { guide: guide === "pakke" ? "logo og profil" : "nettside", anbefalt: PKG[rec.key].name });
+  }
+
   function renderResult() {
     var rec = recommend(), key = shown || rec.key, p = PKG[key], isRec = key === rec.key;
+    if (!shown) trackDone(rec);
     var inc = el("ul", { class: "checks" });
     p.inc.forEach(function (t) { inc.append(el("li", { text: t })); });
     var card = el("div", { class: "gcard" },
