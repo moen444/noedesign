@@ -18,7 +18,7 @@ TEL = "+4746938750"
 TEL_SHOW = "46 93 87 50"
 MAIL = "info@noedesign.no"
 LINKEDIN = "https://www.linkedin.com/company/noedesign"
-VERSION = "88"
+VERSION = "89"
 
 IMG_WIDTHS = {}
 for f in (PUB / "img").glob("*.webp"):
@@ -196,6 +196,10 @@ def page(path, title, desc, body, page_id, ld=None, noindex=False, og=None, scri
     canonical = SITE + (path if path != "/" else "/")
     og_img = SITE + "/img/" + (og or "og-default.jpg")
     lds = [dict({"@context": "https://schema.org"}, **BUSINESS)] + (ld or [])
+    # Kursiv i H1 (f.eks. «profesjonell»): forhåndslast kursiven, så den rekker første visning.
+    # Sammen med font-display: optional i site.css hindrer det at linjeskiftet hopper (CLS).
+    italic_preload = ('<link rel="preload" href="/fonts/newsreader-italic.woff2" as="font" type="font/woff2" crossorigin>\n'
+                      if re.search(r"<h1[^>]*>.*?<em>", body, re.S) else "")
     ld_html = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in lds)
     robots = '<meta name="robots" content="noindex, follow">' if noindex else ""
     return f'''<!doctype html>
@@ -214,7 +218,7 @@ def page(path, title, desc, body, page_id, ld=None, noindex=False, og=None, scri
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/fonts/newsreader-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/hanken-grotesk-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/site.css?v={VERSION}">
+{italic_preload}<link rel="stylesheet" href="/assets/site.css?v={VERSION}">
 {ld_html}
 </head>
 <body data-page="{page_id}">

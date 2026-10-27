@@ -3,7 +3,7 @@
    gul firkant fra i-prikken i logoen som eneste aksent. */
 
 @font-face { font-family: "Newsreader"; src: url(/fonts/newsreader-normal.woff2) format("woff2"); font-weight: 300 600; font-style: normal; font-display: swap; }
-@font-face { font-family: "Newsreader"; src: url(/fonts/newsreader-italic.woff2) format("woff2"); font-weight: 300 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url(/fonts/newsreader-italic.woff2) format("woff2"); font-weight: 300 600; font-style: italic; font-display: optional; } /* optional: hindrer at kursiv i H1 bryter linjen på nytt etter visning (CLS) */
 @font-face { font-family: "Hanken Grotesk"; src: url(/fonts/hanken-grotesk-normal.woff2) format("woff2"); font-weight: 400 800; font-style: normal; font-display: swap; }
 
 :root {
