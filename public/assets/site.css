@@ -134,6 +134,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   .hero-copy { display: contents; }
   .hero > .hero-media { order: 1; margin-inline: calc(-1 * max(20px, env(safe-area-inset-left, 0px))); }
   .hero-copy > .pricebox, .hero-copy > .hero-quote { order: 2; }
+  /* Startpakke: fast pris er hovedargumentet, så prisboksen står rett under knappene, før bildet */
+  body[data-page="startpakke"] .hero-copy > .pricebox { order: 0; }
   .hero-media img { aspect-ratio: 4 / 5; max-height: 70vh; border-radius: 0; }
   .hero-media figcaption { padding-inline: max(20px, env(safe-area-inset-left, 0px)); }
 }
