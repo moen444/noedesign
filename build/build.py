@@ -48,6 +48,28 @@ def pic(name, alt, sizes="(max-width: 860px) 100vw, 50vw", eager=False, cls="", 
             f'width="{w}" height="{h}" alt="{esc(alt)}" {load}>')
 
 
+def slash(path):
+    """Interne sideadresser med avsluttende skråstrek, slik Netlify serverer dem.
+    /logo-design → /logo-design/. Rot, filer (med punktum) og adresser som har skråstrek, er uendret."""
+    if path in ("", "/") or path.endswith("/"):
+        return path
+    last = path.rsplit("/", 1)[-1]
+    return path if "." in last else path + "/"
+
+
+def _fix_url(m):
+    pre, path, rest = m.group(1), m.group(2), m.group(3) or ""
+    return pre + slash(path) + rest
+
+
+def slash_links(html_text):
+    """Legger skråstrek på interne lenker (href="/…") og egne absolutte adresser
+    (canonical, og:url, strukturerte data), så ingen lenke på siden gir 301."""
+    html_text = re.sub(r'(href=")(/[^"#?]*)([#?][^"]*)?(?=")', _fix_url, html_text)
+    html_text = re.sub(r'(https://noedesign\.no)(/[^"#?\s<]*)([#?][^"\s<]*)?', _fix_url, html_text)
+    return html_text
+
+
 BUSINESS = {
     "@type": "ProfessionalService",
     "@id": f"{SITE}/#business",
@@ -215,6 +237,7 @@ def write(path, content):
         out = PUB / path.strip("/")
     # Gult punktum: avsluttende punktum i hovedoverskriften får aksentfargen
     content = re.sub(r'(<h1 class="h-xl">.*?)\.</h1>', r'\1<span class="dot">.</span></h1>', content, count=1, flags=re.S)
+    content = slash_links(content)
     out.parent.mkdir(parents=True, exist_ok=True)
     changed = not out.exists() or out.read_text(encoding="utf-8") != content
     if changed:
@@ -246,9 +269,9 @@ def main():
     if (PUB / "sitemap.xml").exists():
         old = dict(re.findall(r"<loc>([^<]+)</loc><lastmod>([^<]+)</lastmod>", (PUB / "sitemap.xml").read_text(encoding="utf-8")))
     def lastmod(u):
-        loc = SITE + u
+        loc = SITE + slash(u)
         return today if u in changed or loc not in old else old[loc]
-    sm = "".join(f"<url><loc>{SITE}{u}</loc><lastmod>{lastmod(u)}</lastmod></url>" for u in urls)
+    sm = "".join(f"<url><loc>{SITE}{slash(u)}</loc><lastmod>{lastmod(u)}</lastmod></url>" for u in urls)
     (PUB / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>\n', encoding="utf-8")
     (PUB / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /takk\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
     print(f"Bygget {len(built)} sider.")

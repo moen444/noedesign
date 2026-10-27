@@ -23,91 +23,91 @@
 
 [[redirects]]
   from = "/book-møte"
-  to = "/kontakt"
+  to = "/kontakt/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/book-m%C3%B8te"
-  to = "/kontakt"
+  to = "/kontakt/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/bacalaobar"
-  to = "/arbeid/bacalao-bar"
+  to = "/arbeid/bacalao-bar/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/merkevarebygging"
-  to = "/visuell-profil"
+  to = "/visuell-profil/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/copy-of-java-mocca"
-  to = "/arbeid/slice-pizza"
+  to = "/arbeid/slice-pizza/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/vårtarbeid"
-  to = "/arbeid"
+  to = "/arbeid/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/v%C3%A5rtarbeid"
-  to = "/arbeid"
+  to = "/arbeid/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/coldwaterkids"
-  to = "/arbeid/cold-water-kids"
+  to = "/arbeid/cold-water-kids/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/nettside-e-handel"
-  to = "/nettside"
+  to = "/nettside/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/tjenester"
-  to = "/priser"
+  to = "/priser/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/java-mocca"
-  to = "/arbeid/java-mocca"
+  to = "/arbeid/java-mocca/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/om-oss"
-  to = "/om"
+  to = "/om/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/privateliving"
-  to = "/arbeid/private-living"
+  to = "/arbeid/private-living/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/kles-design"
-  to = "/grafisk-design"
+  to = "/grafisk-design/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/arbeid/premiumruss"
-  to = "/arbeid"
+  to = "/arbeid/"
   status = 301
   force = true
 
