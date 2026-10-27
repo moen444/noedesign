@@ -231,9 +231,9 @@ def home(c):
   <div class="head"><span class="eyebrow">Hvorfor meg</span><h2 class="h-l">Én person som kan <em>hele</em> jobben.</h2>
     <p class="lede">De fleste designere leverer en logo. Jeg leverer det bedriften trenger for å bli lagt merke til og få de første kundene.</p></div>
   <div class="reasons">
-    <article class="why-card"><div class="img">{c["pic"]("roa-web-desk", "Nettsiden for Roots of Alpicella på skjerm", "(max-width: 860px) 100vw, 33vw")}<span class="n">01</span></div>
+    <article class="why-card"><div class="img">{c["pic"]("roa-merch", "T-skjorter og caps med logoen til Roots of Alpicella, foran vingården i Liguria", "(max-width: 860px) 100vw, 33vw")}<span class="n">01</span></div>
       <h3>Design, nettside og film fra samme hånd</h3><p>Logo, profil, nettside og film fra én person. Du slipper å koordinere tre leverandører, og alt henger sammen fra start.</p></article>
-    <article class="why-card"><div class="img">{c["pic"]("ekpitch-mockup", "Salgspresentasjon for Elektro Kraft fra Startpakken", "(max-width: 860px) 100vw, 33vw")}<span class="n">02</span></div>
+    <article class="why-card"><div class="img">{c["pic"]("bacalao-phone", "Nettsiden til Bacalao Bar på en mobil ved siden av en kaffekopp", "(max-width: 860px) 100vw, 33vw")}<span class="n">02</span></div>
       <h3>Laget for å selge, ikke bare for å se bra ut</h3><p>Startpakken gir deg en ferdig salgspresentasjon, ikke bare en logo. Jeg kjører også annonser for nettbutikker, så jeg vet hva som gir henvendelser.</p></article>
     <article class="why-card"><div class="img">{c["pic"]("java-cups", "Kopper for Java & Mocca", "(max-width: 860px) 100vw, 33vw")}<span class="n">03</span></div>
       <h3>Kjenner kafé og restaurant</h3><p>Java &amp; Mocca, Slice Pizza og Bacalao Bar. Jeg vet at logoen skal fungere på kopper, esker, menyer og skilt, ikke bare på skjerm.</p></article>

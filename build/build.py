@@ -216,7 +216,10 @@ def write(path, content):
     # Gult punktum: avsluttende punktum i hovedoverskriften får aksentfargen
     content = re.sub(r'(<h1 class="h-xl">.*?)\.</h1>', r'\1<span class="dot">.</span></h1>', content, count=1, flags=re.S)
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(content, encoding="utf-8")
+    changed = not out.exists() or out.read_text(encoding="utf-8") != content
+    if changed:
+        out.write_text(content, encoding="utf-8")
+    return changed
 
 
 def main():
@@ -225,6 +228,7 @@ def main():
     built = P.build_all(ctx)
     problems = []
     urls = []
+    changed = set()
     for pg in built:
         t, d = pg["title"], pg["desc"]
         if not pg.get("noindex"):
@@ -232,10 +236,19 @@ def main():
             if not (120 <= len(d) <= 160): problems.append(f"Beskrivelse {len(d)} tegn: {pg['path']}")
             if pg["path"] != "/404.html": urls.append(pg["path"])
         if pg["body"].count("<h1") != 1: problems.append(f"H1-antall {pg['body'].count('<h1')}: {pg['path']}")
-        write(pg["path"], page(pg["path"], t, d, pg["body"], pg["id"], pg.get("ld"), pg.get("noindex"), pg.get("og"), pg.get("scripts", "")))
+        if write(pg["path"], page(pg["path"], t, d, pg["body"], pg["id"], pg.get("ld"), pg.get("noindex"), pg.get("og"), pg.get("scripts", ""))):
+            changed.add(pg["path"])
+    # lastmod endres bare for sider som faktisk har endret seg. Da gir et nytt bygg uten
+    # endringer i innholdet samme sitemap, og byggekontrollen i GitHub kan sammenligne.
     import datetime
     today = datetime.date.today().isoformat()
-    sm = "".join(f"<url><loc>{SITE}{u}</loc><lastmod>{today}</lastmod></url>" for u in urls)
+    old = {}
+    if (PUB / "sitemap.xml").exists():
+        old = dict(re.findall(r"<loc>([^<]+)</loc><lastmod>([^<]+)</lastmod>", (PUB / "sitemap.xml").read_text(encoding="utf-8")))
+    def lastmod(u):
+        loc = SITE + u
+        return today if u in changed or loc not in old else old[loc]
+    sm = "".join(f"<url><loc>{SITE}{u}</loc><lastmod>{lastmod(u)}</lastmod></url>" for u in urls)
     (PUB / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>\n', encoding="utf-8")
     (PUB / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /takk\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
     print(f"Bygget {len(built)} sider.")
